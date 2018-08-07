@@ -1,117 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>The Startup Bakery</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!--<link rel="stylesheet" href="../libs/mdl/material.css">-->
-    <link rel="stylesheet" href="../libs/mdl/material.blue_grey-amber.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="../css/app.css"/>
+	<meta charset="UTF-8">
+	<title>The Startup Bakery</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!--<link rel="stylesheet" href="../libs/mdl/material.css">-->
+	<link rel="stylesheet" href="../libs/mdl/material.blue_grey-amber.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="../css/app.css"/>
 </head>
 <body>
 <!-- Simple header with scrollable tabs. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
-    <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-            <!-- Title -->
-            <span class="mdl-layout-title">The Startup Bakery</span>
-        </div>
-        <!-- Tabs -->
-        <div id="startViewTabBar" class="mdl-layout__tab-bar mdl-js-ripple-effect">
-            <a href="#myStartupTab" class="mdl-layout__tab is-active">Mein Startup</a>
-            <a href="#myTodosTab" class="mdl-layout__tab">Meine To-Dos</a>
-        </div>
-    </header>
-
-    <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Hauptmenü</span>
-        <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="javascript:switchToView('startView')">Mein Startup</a>
-            <a class="mdl-navigation__link" href="#">Community</a>
-            <a class="mdl-navigation__link" href="#">Matching</a>
-            <a class="mdl-navigation__link" href="#">Anwaltsuche</a>
-            <a class="mdl-navigation__link" href="javascript:switchToView('aboutView')">About</a>
-        </nav>
-    </div>
-
-    <main class="mdl-layout__content">
-        <section class="bakery-view is-active" id="startView">
-            <section class="mdl-layout__tab-panel is-active" id="myStartupTab">
-                <div class="page-content">
-                    <div class="mdl-grid">
-                        <div class="mdl-layout-spacer"></div>
-                        <div class="mdl-cell mdl-cell--8-col">
-                            <ul class="checklist-control mdl-list">
-                                <li class="mdl-list__item mdl-list__item--three-line">
-                            <span class="mdl-list__item-primary-content">
-                                <span>Startup Namen festlegen</span>
-                                <span class="mdl-list__item-text-body">
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                </span>
-                            </span>
-                                    <span class="mdl-list__item-secondary-action">
-                              <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox1">
-                                <input type="checkbox" id="checkbox1" class="mdl-checkbox__input" checked/>
-                              </label>
-                            </span>
-                                </li>
-                                <li class="mdl-list__item mdl-list__item--three-line">
-                            <span class="mdl-list__item-primary-content">
-                                <span>Machbarkeitsprüfung durchführen</span>
-                                <span class="mdl-list__item-text-body">
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                </span>
-                            </span>
-                                    <span class="mdl-list__item-secondary-action">
-                              <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox2">
-                                <input type="checkbox" id="checkbox2" class="mdl-checkbox__input" checked/>
-                              </label>
-                            </span>
-                                </li>
-                                <li class="mdl-list__item mdl-list__item--three-line">
-                            <span class="mdl-list__item-primary-content">
-                              <span>Businessplan ausarbeiten</span>
-                                <span class="mdl-list__item-text-body">
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                </span>
-                            </span>
-                                    <span class="mdl-list__item-secondary-action">
-                              <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox3">
-                                <input type="checkbox" id="checkbox3" class="mdl-checkbox__input" checked/>
-                              </label>
-                            </span>
-                                </li>
-                                <li class="mdl-list__item mdl-list__item--three-line">
-                            <span class="mdl-list__item-primary-content">
-                                <span>Rechtsform wählen</span>
-                                <span class="mdl-list__item-text-body">
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                </span>
-                            </span>
-                                    <span class="mdl-list__item-secondary-action">
-                              <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox4">
-                                <input type="checkbox" id="checkbox4" class="mdl-checkbox__input"/>
-                              </label>
-                            </span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mdl-layout-spacer"></div>
-                    </div>
-                </div>
-            </section>
-            <section class="mdl-layout__tab-panel" id="myTodosTab">
-                <div class="page-content">Welt</div>
-            </section>
-        </section>
-
-        <section class="bakery-view" id="aboutView">
-            Hallo, Welt!
-        </section>
-    </main>
+	<header class="mdl-layout__header">
+		<div class="mdl-layout__header-row">
+			<!-- Title -->
+			<span class="mdl-layout-title">The Startup Bakery</span>
+		</div>
+		<!-- Tabs -->
+		<div id="startViewTabBar" class="mdl-layout__tab-bar mdl-js-ripple-effect">
+			<a href="#myStartupTab" class="mdl-layout__tab is-active">Mein Startup</a>
+			<a href="#myTodosTab" class="mdl-layout__tab">Meine To-Dos</a>
+		</div>
+	</header>
+	
+	<div class="mdl-layout__drawer">
+		<span class="mdl-layout-title">Hauptmenü</span>
+		<nav class="mdl-navigation">
+			<a class="mdl-navigation__link" href="javascript:switchToView('startView')">Mein Startup</a>
+			<a class="mdl-navigation__link" href="#">Community</a> <a class="mdl-navigation__link" href="#">Matching</a>
+			<a class="mdl-navigation__link" href="#">Anwaltsuche</a>
+			<a class="mdl-navigation__link" href="javascript:switchToView('aboutView')">About</a>
+		</nav>
+	</div>
+	
+	<main class="mdl-layout__content">
+		<section class="bakery-view is-active" id="startView">
+			<section class="mdl-layout__tab-panel is-active" id="myStartupTab">
+				<div class="page-content">
+					<div class="mdl-grid">
+						<div class="mdl-layout-spacer"></div>
+						<div class="mdl-cell mdl-cell--8-col">
+							<ul class="checklist-control mdl-list">
+								<li class="mdl-list__item mdl-list__item--three-line">
+									<span class="mdl-list__item-primary-content">
+										<span>Startup Namen festlegen</span>
+										<span class="mdl-list__item-text-body">
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+										</span>
+									</span> <span class="mdl-list__item-secondary-action">
+									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox1">
+										<input type="checkbox" id="checkbox1" class="mdl-checkbox__input" checked/>
+									</label>
+								</span>
+								</li>
+								<li class="mdl-list__item mdl-list__item--three-line">
+									<span class="mdl-list__item-primary-content">
+										<span>Machbarkeitsprüfung durchführen</span>
+										<span class="mdl-list__item-text-body">
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+										</span>
+									</span> <span class="mdl-list__item-secondary-action">
+									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox2">
+										<input type="checkbox" id="checkbox2" class="mdl-checkbox__input" checked/>
+									</label>
+								</span>
+								</li>
+								<li class="mdl-list__item mdl-list__item--three-line">
+									<span class="mdl-list__item-primary-content">
+										<span>Businessplan ausarbeiten</span>
+										<span class="mdl-list__item-text-body">
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+										</span>
+									</span> <span class="mdl-list__item-secondary-action">
+									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox3">
+										<input type="checkbox" id="checkbox3" class="mdl-checkbox__input" checked/>
+									</label>
+								</span>
+								</li>
+								<li class="mdl-list__item mdl-list__item--three-line">
+									<span class="mdl-list__item-primary-content">
+										<span>Rechtsform wählen</span>
+										<span class="mdl-list__item-text-body">
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+										</span>
+									</span> <span class="mdl-list__item-secondary-action">
+									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox4">
+										<input type="checkbox" id="checkbox4" class="mdl-checkbox__input"/>
+									</label>
+								</span>
+								</li>
+							</ul>
+						</div>
+						<div class="mdl-layout-spacer"></div>
+					</div>
+				</div>
+			</section>
+			<section class="mdl-layout__tab-panel" id="myTodosTab">
+				<div class="page-content">Welt</div>
+			</section>
+		</section>
+		
+		<section class="bakery-view" id="aboutView">
+			<div class="mdl-grid">
+				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<img class="img-responsive" src="../gfx/chef.svg">
+				</div>
+				<div class="mdl-layout-spacer"></div>
+			</div>
+			<div class="mdl-grid">
+				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-cell mdl-cell--4-col">
+					<h1>The Startup Bakery</h1>
+					<p>
+						Diese App ist im Rahmen der </p>
+				</div>
+				<div class="mdl-layout-spacer"></div>
+			</div>
+		</section>
+	</main>
 </div>
 
 <script src="../libs/jquery/jquery-3.3.1.js"></script>

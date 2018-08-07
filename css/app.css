@@ -5,3 +5,9 @@
 .bakery-view.is-active {
     display: block;
 }
+
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
