@@ -3,13 +3,13 @@
   "name": "Startup Bakery",
   "icons": [
     {
-      "src": "gfx/chef.svg",
+      "src": "gfx/chef.png",
       "sizes": "192x192",
-      "type": "image/svg"
+      "type": "image/png"
     }
   ],
 
-  "start_url": "index.html",
+  "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait"
 }
