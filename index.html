@@ -3,9 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <meta http-equiv="refresh" content="0; url=html/startupState.html" />
+    <!--<meta http-equiv="refresh" content="0; url=html/startupState.html" />-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="libs/mdl/material.blue_grey-amber.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	
+	<link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
 
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+            mdl-layout--fixed-tabs">
+	<header class="mdl-layout__header">
+		<div class="mdl-layout__header-row">
+			<span class="mdl-layout-title"></span>
+		</div>
+		<div id="startViewTabBar" class="mdl-layout__tab-bar mdl-js-ripple-effect">
+			<a href="#" class="mdl-layout__tab"></a>
+			<a href="#" class="mdl-layout__tab"></a>
+		</div>
+	</header>
+	<main class="mdl-layout__content">
+		<section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+			
+			<div class="mdl-grid">
+				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<img class="img-responsive" src="gfx/chef.svg">
+				</div>
+				<div class="mdl-layout-spacer"></div>
+			</div>
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--12-col">
+					<h3 class="mdl-typography--text-center">Willkommen in der Startup Bakery!</h3>
+				</div>
+			</div>
+			<div class="mdl-grid">
+				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" style="margin: 20px;"></div>
+				</div>
+				<div class="mdl-layout-spacer"></div>
+			</div>
+		</section>
+	</main>
+</div>
+
+<script src="libs/jquery/jquery-3.3.1.js"></script>
+<script src="libs/mdl/material.js"></script>
+<script src="js/splash.js"></script>
 </body>
 </html>
