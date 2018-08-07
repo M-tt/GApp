@@ -17,3 +17,8 @@ body {
                                   supported by Chrome and Opera */
 }
 
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
