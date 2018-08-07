@@ -1,0 +1,7 @@
+.bakery-view {
+    display: none;
+}
+
+.bakery-view.is-active {
+    display: block;
+}
