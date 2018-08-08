@@ -109,7 +109,45 @@
 				</div>
 			</section>
 			<section class="mdl-layout__tab-panel" id="myTodosTab">
-				<div class="page-content">Welt</div>
+				<div class="page-content">
+					<div class="mdl-grid">
+						<div class="mdl-layout-spacer"></div>
+						<div class="mdl-cell mdl-cell--1-col">
+							<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+								<i class="material-icons">add</i>
+							</button>
+						</div>
+					</div>
+					<div class="mdl-grid">
+						<div class="mdl-layout-spacer"></div>
+						<div class="mdl-cell mdl-cell--1-col">
+							<img class="img-responsive" src="../gfx/chef.svg">
+						</div>
+						<div class="mdl-layout-spacer"></div>
+					</div>
+					<div class="mdl-grid">
+						<div class="mdl-layout-spacer"></div>
+						<div class="mdl-cell mdl-cell--8-col">
+							<ul class="checklist-control mdl-list" id="myTodoList">
+								<li class="mdl-list__item mdl-list__item--two-line">
+									<span class="mdl-list__item-primary-content">
+										<span>{$title}</span>
+										<span class="mdl-list__item-sub-title">
+											{$text}
+										</span>
+									</span> <span class="mdl-list__item-secondary-action">
+									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{$checkboxName}">
+										<input type="checkbox" id="{$checkboxName}" class="mdl-checkbox__input" {$state}/>
+									</label>
+								</span>
+								</li>
+							</ul>
+						</div>
+						<div class="mdl-layout-spacer"></div>
+					</div>
+					
+					
+				</div>
 			</section>
 		</section>
 		
@@ -182,5 +220,6 @@
 <script src="../libs/jquery/jquery-3.3.1.js"></script>
 <script src="../libs/mdl/material.js"></script>
 <script src="../js/app.js"></script>
+<script src="../js/todoListHandler.js"></script>
 </body>
 </html>
