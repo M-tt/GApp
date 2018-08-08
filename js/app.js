@@ -2,13 +2,30 @@ $(document).ready(function() {
     initTodoListHandler();
 });
 
+var viewsWithDrawerMenu = ["startView", "aboutView"];
+
+var viewHistory = ["startView"];
 
 function switchToView(viewId) {
 
     // hides and unhides the tabs
-    $("#startViewTabBar").parent()[0].style = "display:none;";
-    if (viewId == "startView") {
-        $("#startViewTabBar").parent()[0].style = "";
+    var tabBar = $("#startViewTabBar").parent()[0];
+    tabBar.style = "display:none;";
+    if (viewId === "startView") {
+        tabBar.style = "";
+    }
+
+    // transforms drawer menu button to back button and vice versa
+    var drawerButton = $("#drawerMenuButton")[0];
+    var backButton = $("#backButton")[0];
+
+    drawerButton.style = "display: none;";
+    backButton.style = "display: none;";
+
+    if (viewsWithDrawerMenu.find(function(v) {return v === viewId;})) {
+        drawerButton.style = "";
+    } else {
+        backButton.style = "";
     }
 
     //toggles the viewable items
@@ -21,6 +38,14 @@ function switchToView(viewId) {
     view.addClass("is-active");
 
     closeDrawer();
+
+    viewHistory.push(viewId);
+}
+
+function goBack() {
+    viewHistory.pop();
+    var lastView = viewHistory.pop();
+    switchToView(lastView);
 }
 
 function closeDrawer() {

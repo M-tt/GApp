@@ -1,225 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>The Startup Bakery</title>
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	
-	<link rel="manifest" href="../manifest.json">
-	<link rel="stylesheet" href="../libs/mdl/material.blue_grey-amber.min.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	
-	<link rel="stylesheet" href="../css/app.css"/>
+    <meta charset="UTF-8">
+    <title>The Startup Bakery</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="manifest" href="../manifest.json">
+    <link rel="stylesheet" href="../libs/mdl/material.blue_grey-amber.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="../css/app.css"/>
 </head>
 <body>
 <!-- Simple header with scrollable tabs. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
-	<header class="mdl-layout__header">
-		<div class="mdl-layout__header-row">
-			<!-- Title -->
-			<span class="mdl-layout-title">The Startup Bakery</span>
-		</div>
-		<!-- Tabs -->
-		<div id="startViewTabBar" class="mdl-layout__tab-bar mdl-js-ripple-effect">
-			<a href="#myStartupTab" class="mdl-layout__tab is-active">Mein Startup</a>
-			<a href="#myTodosTab" class="mdl-layout__tab">Meine To-Dos</a>
-		</div>
-	</header>
-	
-	<div class="mdl-layout__drawer">
-		<span class="mdl-layout-title">Hauptmenü</span>
-		<nav class="mdl-navigation">
-			<a class="mdl-navigation__link" href="javascript:switchToView('startView')">Mein Startup</a>
-			<a class="mdl-navigation__link" href="#">Community</a> <a class="mdl-navigation__link" href="#">Matching</a>
-			<a class="mdl-navigation__link" href="#">Anwaltsuche</a>
-			<a class="mdl-navigation__link" href="javascript:switchToView('aboutView')">About</a>
-		</nav>
-	</div>
-	
-	<main class="mdl-layout__content">
-		<section class="bakery-view is-active" id="startView">
-			<section class="mdl-layout__tab-panel is-active" id="myStartupTab">
-				<div class="page-content">
-					<div class="mdl-grid">
-						<div class="mdl-layout-spacer"></div>
-						<div class="mdl-cell mdl-cell--1-col">
-							<img class="img-responsive" src="../gfx/chef.svg">
-						</div>
-						<div class="mdl-layout-spacer"></div>
-					</div>
-					<div class="mdl-grid">
-						<div class="mdl-layout-spacer"></div>
-						<div class="mdl-cell mdl-cell--8-col">
-							<ul class="checklist-control mdl-list">
-								<li class="mdl-list__item mdl-list__item--three-line">
-									<span class="mdl-list__item-primary-content">
-										<span>Startup Namen festlegen</span>
-										<span class="mdl-list__item-text-body">
-											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-										</span>
-									</span> <span class="mdl-list__item-secondary-action">
-									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox1">
-										<input type="checkbox" id="checkbox1" class="mdl-checkbox__input" checked/>
-									</label>
-								</span>
-								</li>
-								<li class="mdl-list__item mdl-list__item--two-line">
-									<span class="mdl-list__item-primary-content">
-										<span>Machbarkeitsprüfung durchführen</span>
-										<span class="mdl-list__item-sub-title">
-											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-										</span>
-									</span> <span class="mdl-list__item-secondary-action">
-									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox2">
-										<input type="checkbox" id="checkbox2" class="mdl-checkbox__input" checked/>
-									</label>
-								</span>
-								</li>
-								<li class="mdl-list__item mdl-list__item--three-line">
-									<span class="mdl-list__item-primary-content">
-										<span>Businessplan ausarbeiten</span>
-										<span class="mdl-list__item-text-body">
-											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-										</span>
-									</span> <span class="mdl-list__item-secondary-action">
-									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox3">
-										<input type="checkbox" id="checkbox3" class="mdl-checkbox__input" checked/>
-									</label>
-								</span>
-								</li>
-								<li class="mdl-list__item mdl-list__item--three-line">
-									<span class="mdl-list__item-primary-content">
-										<span>Rechtsform wählen</span>
-										<span class="mdl-list__item-text-body">
-											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-										</span>
-									</span> <span class="mdl-list__item-secondary-action">
-									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox4">
-										<input type="checkbox" id="checkbox4" class="mdl-checkbox__input"/>
-									</label>
-								</span>
-								</li>
-							</ul>
-						</div>
-						<div class="mdl-layout-spacer"></div>
-					</div>
-				</div>
-			</section>
-			<section class="mdl-layout__tab-panel" id="myTodosTab">
-				<div class="page-content">
-					<div class="mdl-grid">
-						<div class="mdl-layout-spacer"></div>
-						<div class="mdl-cell mdl-cell--1-col">
-							<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-								<i class="material-icons">add</i>
-							</button>
-						</div>
-					</div>
-					<div class="mdl-grid">
-						<div class="mdl-layout-spacer"></div>
-						<div class="mdl-cell mdl-cell--1-col">
-							<img class="img-responsive" src="../gfx/chef.svg">
-						</div>
-						<div class="mdl-layout-spacer"></div>
-					</div>
-					<div class="mdl-grid">
-						<div class="mdl-layout-spacer"></div>
-						<div class="mdl-cell mdl-cell--8-col">
-							<ul class="checklist-control mdl-list" id="myTodoList">
-								<li class="mdl-list__item mdl-list__item--two-line">
-									<span class="mdl-list__item-primary-content">
-										<span>{$title}</span>
-										<span class="mdl-list__item-sub-title">
-											{$text}
-										</span>
-									</span> <span class="mdl-list__item-secondary-action">
-									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{$checkboxName}">
-										<input type="checkbox" id="{$checkboxName}" class="mdl-checkbox__input" {$state}/>
-									</label>
-								</span>
-								</li>
-							</ul>
-						</div>
-						<div class="mdl-layout-spacer"></div>
-					</div>
-					
-					
-				</div>
-			</section>
-		</section>
-		
-		<section class="bakery-view" id="aboutView">
-			<div class="mdl-grid">
-				<div class="mdl-layout-spacer"></div>
-				<div class="mdl-cell--middle mdl-cell--1-col">
-					<img class="img-responsive" src="../gfx/chef.svg">
-				</div>
-				<div class="mdl-layout-spacer"></div>
-			</div>
-			<div class="mdl-grid">
-				<div class="mdl-cell mdl-cell--12-col" style="text-align: center">
-					<p>Diese App ist im Rahmen eines LegalTech-Wettbewerbs von Hogan Lovells entstanden und soll in der vorliegenden Version als Prototyp dienen.</p>
-				</div>
-			</div>
-			
-			<div class="mdl-grid">
-				<div class="mdl-layout-spacer"></div>
-				<div class="mdl-cell mdl-cell--6-col">
-					<ul class="mdl-list">
-						<li class="mdl-list__item mdl-list__item--two-line">
-					<span class="mdl-list__item-primary-content">
-						<i class="material-icons mdl-list__item-avatar">person</i>
-						<span>Daniella Domokos</span>
-						<span class="mdl-list__item-sub-title">Konzept, Inhalt & Design</span>
-					</span>
-						</li>
-						<li class="mdl-list__item mdl-list__item--two-line">
-					<span class="mdl-list__item-primary-content">
-						<i class="material-icons mdl-list__item-avatar">person</i>
-						<span>Gitty Narymany Shandy</span>
-						<span class="mdl-list__item-sub-title">Konzept, Inhalt & Design</span>
-					</span>
-						</li>
-						<li class="mdl-list__item mdl-list__item--two-line">
-					<span class="mdl-list__item-primary-content">
-						<i class="material-icons mdl-list__item-avatar">person</i>
-						<span>Matthias Kleinhenz</span>
-						<span class="mdl-list__item-sub-title">Softwareengineering & -development</span>
-					</span>
-						</li>
-						<li class="mdl-list__item mdl-list__item--two-line">
-					<span class="mdl-list__item-primary-content">
-						<i class="material-icons mdl-list__item-avatar">person</i>
-						<span>René Ziegler</span>
-						<span class="mdl-list__item-sub-title">Softwareengineering & -development</span>
-					</span>
-						</li>
-					</ul>
-				</div>
-				<div class="mdl-layout-spacer"></div>
-			</div>
-			
-			<div class="mdl-grid">
-				<div class="mdl-cell mdl-cell--12-col" style="text-align: center">
-					Lizenzen:
-					<div>
-						Chef's Hat Icon made by
-						<a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from
-						<a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by
-						<a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
-					</div>
-				</div>
-			</div>
-		</section>
-	</main>
+    <header class="mdl-layout__header">
+        <!-- Drawer Menu Button -->
+        <div id="drawerMenuButton" role="button" class="mdl-layout__drawer-button">
+            <i class="material-icons">menu</i>
+        </div>
+
+        <!-- Back arrow Button -->
+        <div id="backButton" role="button" class="mdl-layout__drawer-button" onclick="goBack()" style="display: none;">
+            <i class="material-icons">arrow_back</i>
+        </div>
+
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">The Startup Bakery</span>
+        </div>
+
+        <!-- Tabs -->
+        <div id="startViewTabBar" class="mdl-layout__tab-bar mdl-js-ripple-effect">
+            <a href="#myStartupTab" class="mdl-layout__tab is-active">Mein Startup</a>
+            <a href="#myTodosTab" class="mdl-layout__tab">Meine To-Dos</a>
+        </div>
+    </header>
+
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Hauptmenü</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="javascript:switchToView('startView')">Mein Startup</a>
+            <a class="mdl-navigation__link" href="#">Community</a> <a class="mdl-navigation__link" href="#">Matching</a>
+            <a class="mdl-navigation__link" href="#">Anwaltsuche</a>
+            <a class="mdl-navigation__link" href="javascript:switchToView('aboutView')">About</a>
+        </nav>
+    </div>
+
+    <main class="mdl-layout__content">
+        <section class="bakery-view is-active" id="startView">
+            <section class="mdl-layout__tab-panel is-active" id="myStartupTab">
+                <div class="page-content">
+                    <div class="mdl-grid">
+                        <div class="mdl-layout-spacer"></div>
+                        <div class="mdl-cell mdl-cell--1-col">
+                            <img class="img-responsive" src="../gfx/chef.svg">
+                        </div>
+                        <div class="mdl-layout-spacer"></div>
+                    </div>
+                    <div class="mdl-grid">
+                        <div class="mdl-layout-spacer"></div>
+                        <div class="mdl-cell mdl-cell--8-col">
+                            <ul class="checklist-control mdl-list">
+                                <li class="mdl-list__item mdl-list__item--three-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span>Startup Namen festlegen</span>
+                                        <span class="mdl-list__item-text-body">
+                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                        </span>
+                                    </span> <span class="mdl-list__item-secondary-action">
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox1">
+                                        <input type="checkbox" id="checkbox1" class="mdl-checkbox__input" checked/>
+                                    </label>
+                                </span>
+                                </li>
+                                <li class="mdl-list__item mdl-list__item--two-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span>Machbarkeitsprüfung durchführen</span>
+                                        <span class="mdl-list__item-sub-title">
+                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                        </span>
+                                    </span> <span class="mdl-list__item-secondary-action">
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox2">
+                                        <input type="checkbox" id="checkbox2" class="mdl-checkbox__input" checked/>
+                                    </label>
+                                </span>
+                                </li>
+                                <li class="mdl-list__item mdl-list__item--three-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span>Businessplan ausarbeiten</span>
+                                        <span class="mdl-list__item-text-body">
+                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                        </span>
+                                    </span> <span class="mdl-list__item-secondary-action">
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox3">
+                                        <input type="checkbox" id="checkbox3" class="mdl-checkbox__input" checked/>
+                                    </label>
+                                </span>
+                                </li>
+                                <li class="mdl-list__item mdl-list__item--three-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span>Rechtsform wählen</span>
+                                        <span class="mdl-list__item-text-body">
+                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                        </span>
+                                    </span> <span class="mdl-list__item-secondary-action">
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox4">
+                                        <input type="checkbox" id="checkbox4" class="mdl-checkbox__input"
+                                               onclick="switchToView('questionnaireView')"/>
+                                    </label>
+                                </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mdl-layout-spacer"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="myTodosTab">
+                <div class="page-content">Welt</div>
+            </section>
+        </section>
+
+        <section class="bakery-view" id="aboutView">
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-cell--middle mdl-cell--1-col">
+                    <img class="img-responsive" src="../gfx/chef.svg">
+                </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col" style="text-align: center">
+                    <p>Diese App ist im Rahmen eines LegalTech-Wettbewerbs von Hogan Lovells entstanden und soll in der
+                        vorliegenden Version als Prototyp dienen.</p>
+                </div>
+            </div>
+
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-cell mdl-cell--6-col">
+                    <ul class="mdl-list">
+                        <li class="mdl-list__item mdl-list__item--two-line">
+                            <span class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-avatar">person</i>
+                                <span>Daniella Domokos</span>
+                                <span class="mdl-list__item-sub-title">Konzept, Inhalt & Design</span>
+                            </span>
+                        </li>
+                        <li class="mdl-list__item mdl-list__item--two-line">
+                            <span class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-avatar">person</i>
+                                <span>Gitty Narymany Shandy</span>
+                                <span class="mdl-list__item-sub-title">Konzept, Inhalt & Design</span>
+                            </span>
+                        </li>
+                        <li class="mdl-list__item mdl-list__item--two-line">
+                            <span class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-avatar">person</i>
+                                <span>Matthias Kleinhenz</span>
+                                <span class="mdl-list__item-sub-title">Softwareengineering & -development</span>
+                            </span>
+                        </li>
+                        <li class="mdl-list__item mdl-list__item--two-line">
+                            <span class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-avatar">person</i>
+                                <span>René Ziegler</span>
+                                <span class="mdl-list__item-sub-title">Softwareengineering & -development</span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col" style="text-align: center">
+                    Lizenzen:
+                    <div>
+                        Chef's Hat Icon made by
+                        <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons" target="_blank">Those Icons</a> from
+                        <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a> is licensed by
+                        <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="questionnaireView" class="bakery-view">
+
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-cell mdl-cell--6-col">
+                    <div class="mdl-card mdl-shadow--3dp">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Gründungsmitglieder</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            Gründest du alleine oder hast du Mitgründer?
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <div class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Alleine</div>
+                            <div class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Mit anderen zusammen</div>
+                        </div>
+                    </div>
+                    <div> &nbsp; </div>
+                    <div class="mdl-card mdl-shadow--3dp">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Haftung</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            Für den Fall, dass deine Idee nicht funktionieren sollte oder finanzielle Probleme auftreten (wovon wir nicht ausgehen ;)), ist von der Rechtsform abghängig, mit welchem Vermögen gehaftet wird.
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <div class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Ich hafte persönlich</div>
+                            <div class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Das Geschäftsvermögen soll haften</div>
+                        </div>
+                    </div>
+                    <div> &nbsp; </div>
+                </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </section>
+
+    </main>
 </div>
 
 <script src="../libs/jquery/jquery-3.3.1.js"></script>
 <script src="../libs/mdl/material.js"></script>
 <script src="../js/app.js"></script>
-<script src="../js/todoListHandler.js"></script>
 </body>
 </html>
