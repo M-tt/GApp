@@ -155,8 +155,9 @@ function appendEntryHtml(entry) {
         moveHtmlEntryDown(entry.id);
     });
 
-    htmlEntry.parents("li").click(function() {
-       htmlEntry.trigger("click");
+    htmlEntry.parents("li")[0].click(function(event) {
+        event.stopPropagation();
+        htmlEntry.trigger("click");
     });
 
     componentHandler.upgradeDom();
