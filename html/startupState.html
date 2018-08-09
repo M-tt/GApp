@@ -28,9 +28,11 @@
 			<i class="material-icons">arrow_back</i>
 		</div>
 
-		<div class="mdl-layout__header-row">
+		<div class="mdl-layout__header-row" style="width: 100%;">
 			<!-- Title -->
 			<span class="mdl-layout-title">The Startup Bakery</span>
+			<!-- App Icon -->
+			<img class="img-responsive chefs-hat" src="../gfx/chef_white.svg">
 		</div>
 
 		<!-- Tabs -->
@@ -51,16 +53,9 @@
 	</div>
 
 	<main class="mdl-layout__content">
-		<section class="bakery-view is-active" id="startView">
+		<section id="startView" class="bakery-view is-active">
 			<section class="mdl-layout__tab-panel is-active" id="myStartupTab">
 				<div class="page-content">
-					<div class="mdl-grid">
-						<div class="mdl-layout-spacer"></div>
-						<div class="mdl-cell mdl-cell--1-col">
-							<img class="img-responsive" src="../gfx/chef.svg">
-						</div>
-						<div class="mdl-layout-spacer"></div>
-					</div>
 					<div class="mdl-grid">
 						<div class="mdl-layout-spacer"></div>
 						<div class="mdl-cell mdl-cell--8-col">
@@ -109,7 +104,7 @@
 										</span>
 									</span> <span class="mdl-list__item-secondary-action">
 									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox4">
-										<input type="checkbox" id="checkbox4" class="mdl-checkbox__input"/>
+										<input type="checkbox" id="checkbox4" class="mdl-checkbox__input" onclick="switchToView('questionnaireView')"/>
 									</label>
 								</span>
 								</li>
@@ -131,13 +126,6 @@
 					</div>
 					<div class="mdl-grid">
 						<div class="mdl-layout-spacer"></div>
-						<div class="mdl-cell mdl-cell--1-col">
-							<img class="img-responsive" src="../gfx/chef.svg">
-						</div>
-						<div class="mdl-layout-spacer"></div>
-					</div>
-					<div class="mdl-grid">
-						<div class="mdl-layout-spacer"></div>
 						<div class="mdl-cell mdl-cell--8-col">
 							<ul class="checklist-control mdl-list" id="myTodoList">
 
@@ -150,14 +138,7 @@
 			</section>
 		</section>
 
-		<section class="bakery-view" id="aboutView">
-			<div class="mdl-grid">
-				<div class="mdl-layout-spacer"></div>
-				<div class="mdl-cell--middle mdl-cell--1-col">
-					<img class="img-responsive" src="../gfx/chef.svg">
-				</div>
-				<div class="mdl-layout-spacer"></div>
-			</div>
+		<section id="aboutView" class="bakery-view">
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--12-col" style="text-align: center">
 					<p>Diese App ist im Rahmen eines LegalTech-Wettbewerbs von Hogan Lovells entstanden und soll in der
