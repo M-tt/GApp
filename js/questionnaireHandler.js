@@ -13,7 +13,7 @@ let cardTemplate =
     '</div>' +
     '<div>&nbsp;</div>';
 
-let answerTemplate =
+let buttonTemplate =
     '<div id="{$id}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="questionnaireNext(\'{$id}\')">' +
     '{$text}' +
     '</div>' +
@@ -37,7 +37,7 @@ function questionnaireNext(answerId) {
         for (let i in next.answers) {
             let answer = next.answers[i];
 
-            let aTemplate = answerTemplate;
+            let aTemplate = buttonTemplate;
 
             aTemplate = aTemplate.replace(/{\$id}/g, answer.id);
             aTemplate = aTemplate.replace(/{\$text}/g, answer.text);
@@ -48,6 +48,7 @@ function questionnaireNext(answerId) {
         qTemplate = qTemplate.replace(/<!--{\$answer}-->/g, "");
 
         qContainer.append(qTemplate);
+
     } else {
         //generate result card
         let result = givenAnswer.nextItem;
@@ -58,7 +59,15 @@ function questionnaireNext(answerId) {
         rTemplate = rTemplate.replace(/{\$title}/g, result.rechtsform);
         rTemplate = rTemplate.replace(/{\$text}/g, result.text);
 
-        qContainer.html(rTemplate);
+        let bTemplate = buttonTemplate;
+
+        bTemplate = bTemplate.replace(/questionnaireNext\('{\$id}'\)/g, "switchToView('startView')");
+        bTemplate = bTemplate.replace(/{\$id}/g, "resultOK");
+        bTemplate = bTemplate.replace(/{\$text}/g, "OK");
+        rTemplate = rTemplate.replace(/<!--{\$answer}-->/g, bTemplate);
+        rTemplate = rTemplate.replace(/<!--{\$answer}-->/g, "");
+
+        qContainer.append(rTemplate);
     }
 }
 
@@ -77,6 +86,7 @@ class Question {
 
     fetchAnswers() {
         for (let i in this.answerIds) {
+            // noinspection JSUnfilteredForInLoop cause no
             let answerId = this.answerIds[i];
             let answer = answers.find((a => a.id === answerId));
             if (answer) {
@@ -128,8 +138,9 @@ answers.push(new Answer("aSoloPrivat", "rFreiberufler", "Persönlich"));
 answers.push(new Answer("aSoloFirma", "rGmbH", "Gesellschaftsvermögen"));
 //answers.push(new Answer("", "", ""));
 
-results.push(new Result("rFreiberufler", "Freiberufler", "yey"));
-results.push(new Result("rGmbH", "GmbH", "yeey"));
+results.push(new Result("rFreiberufler", "Freiberufler", "Du bist ein Freiberufler und darfst legal Steuern hinterziehen! yey!"));
+results.push(new Result("rGmbH", "GmbH", "Du bist eine GmbH! Nach mir die Sintflut! yey!"));
+// results.push(new Result("", "", ""));
 
 questions.forEach(q => q.fetchAnswers());
 answers.forEach(a => a.fetchNextItem());
