@@ -26,6 +26,24 @@ function initTestData() {
 function initTodoListHandler() {
     bindButtonEvents();
     loadEntriesFromStorage();
+
+    initDeleteConfirmDialog();
+}
+
+function initDeleteConfirmDialog() {
+    let dialogButton = document.querySelector('.dialog-button');
+    let dialog = document.querySelector('#dialog');
+
+    if (! dialog.showModal) {
+        dialogPolyfill.registerDialog(dialog);
+    }
+    dialogButton.addEventListener('click', function() {
+        dialog.showModal();
+    });
+    dialog.querySelector('button:not([disabled])')
+        .addEventListener('click', function() {
+            dialog.close();
+        });
 }
 
 function bindButtonEvents() {

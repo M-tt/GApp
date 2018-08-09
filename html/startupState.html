@@ -7,7 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-
+	
+	<link rel="stylesheet" href="../libs/dialogPolyfill/dialog-polyfill.css">
+	
 	<link rel="manifest" href="../manifest.json">
 	<link rel="stylesheet" href="../libs/mdl/material.blue_grey-amber.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -138,7 +140,23 @@
 					<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-ext__fixed-fab">
 						<i class="material-icons">add</i>
 					</button>
-
+					
+					<!-- DELETE CONFIRM DIALOG ------------------------------------------------------->
+					<button class="mdl-button mdl-button--raised mdl-js-button dialog-button">Show Dialog</button>
+					
+					<dialog id="dialog" class="mdl-dialog">
+						<h3 class="mdl-dialog__title">MDL Dialog</h3>
+						<div class="mdl-dialog__content">
+							<p>
+								This is an example of the Material Design Lite dialog component.
+								Please use responsibly.
+							</p>
+						</div>
+						<div class="mdl-dialog__actions">
+							<button type="button" class="mdl-button">Close</button>
+							<button type="button" class="mdl-button" disabled>Disabled action</button>
+						</div>
+					</dialog>
 				</div>
 			</section>
 		</section>
@@ -252,6 +270,7 @@
 </div>
 
 <script src="../libs/jquery/jquery-3.3.1.js"></script>
+<script src="../libs/dialogPolyfill/dialog-polyfill.js"></script>
 <script src="../libs/mdl/material.js"></script>
 <script src="../js/app.js"></script>
 <script src="../js/todoListHandler.js"></script>
