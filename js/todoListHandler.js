@@ -24,15 +24,55 @@ function initTestData() {
 }
 
 function initTodoListHandler() {
-    bindButtonEvents();
     loadEntriesFromStorage();
 
     initDeleteConfirmDialog();
+    initAddEntryDialog();
+}
+
+function initAddEntryDialog() {
+    let dialog = document.querySelector('#createDialog');
+
+    if (! dialog.showModal) {
+        dialogPolyfill.registerDialog(dialog);
+    }
+
+    $("#addTodoButton").click(function() {
+        dialog.showModal();
+    });
+
+    $("#newEntryCancel").click(function() {
+        let title = $("#newEntryTitle");
+        let text = $("#newEntryText");
+
+        title.val("");
+        title.parent().removeClass("is-dirty");
+
+        text.val("");
+        text.parent().removeClass("is-dirty");
+
+        dialog.close();
+    });
+
+    $("#newEntryCreate").click(function() {
+        let title = $("#newEntryTitle");
+        let text = $("#newEntryText");
+
+        createNewEntry(title.val(), text.val());
+
+        title.val("");
+        title.parent().removeClass("is-dirty");
+
+        text.val("");
+        text.parent().removeClass("is-dirty");
+
+        dialog.close();
+    });
 }
 
 function initDeleteConfirmDialog() {
     let dialogButton = document.querySelector('.dialog-button');
-    let dialog = document.querySelector('#dialog');
+    let dialog = document.querySelector('#deleteDialog');
 
     if (! dialog.showModal) {
         dialogPolyfill.registerDialog(dialog);
@@ -44,16 +84,6 @@ function initDeleteConfirmDialog() {
         .addEventListener('click', function() {
             dialog.close();
         });
-}
-
-function bindButtonEvents() {
-    $("#addTodoButton").click(function() {
-        showAddEntryDialog();
-    })
-}
-
-function showAddEntryDialog() {
-
 }
 
 function loadEntriesFromStorage() {

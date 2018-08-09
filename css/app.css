@@ -44,19 +44,19 @@ body {
 }
 
 .mdl-ext__micro-button {
-    transform: scale(0.75, 0.75) translateX(-1em);
+    transform: scale(0.9, 0.9) translateX(-1em);
 }
 
 .mdl-dialog {
     border: none;
     box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
-    width: 280px;
+    width: 290px;
 }
 
 .mdl-dialog__title {
     padding: 24px 24px 0;
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 2.0rem;
 }
 
 .mdl-dialog__actions {
