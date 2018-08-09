@@ -137,14 +137,14 @@
 						<div class="mdl-layout-spacer"></div>
 					</div>
 					
-					<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-ext__fixed-fab">
+					<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-ext__fixed-fab" id="addTodoButton">
 						<i class="material-icons">add</i>
 					</button>
 					
 					<!-- DELETE CONFIRM DIALOG ------------------------------------------------------->
 					<button class="mdl-button mdl-button--raised mdl-js-button dialog-button">Show Dialog</button>
 					
-					<dialog id="dialog" class="mdl-dialog">
+					<dialog id="deleteDialog" class="mdl-dialog">
 						<h3 class="mdl-dialog__title">MDL Dialog</h3>
 						<div class="mdl-dialog__content">
 							<p>
@@ -155,6 +155,29 @@
 						<div class="mdl-dialog__actions">
 							<button type="button" class="mdl-button">Close</button>
 							<button type="button" class="mdl-button" disabled>Disabled action</button>
+						</div>
+					</dialog>
+					
+					<!-- CREATE DIALOG ------------------------------------------------------->
+					<dialog id="createDialog" class="mdl-dialog">
+						<h3 class="mdl-dialog__title">Neuer Eintrag</h3>
+						<div class="mdl-dialog__content">
+							<form action="#">
+								<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+									<input class="mdl-textfield__input" type="text" id="newEntryTitle">
+									<label class="mdl-textfield__label" for="newEntryTitle">Titel...</label>
+								</div>
+							</form>
+							<form action="#">
+								<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+									<input class="mdl-textfield__input" type="text" id="newEntryText">
+									<label class="mdl-textfield__label" for="newEntryText">Beschreibung...</label>
+								</div>
+							</form>
+						</div>
+						<div class="mdl-dialog__actions">
+							<button type="button" class="mdl-button mdl-button--colored" id="newEntryCreate">Erstellen</button>
+							<button type="button" class="mdl-button mdl-button--colored" id="newEntryCancel">Abbrechen</button>
 						</div>
 					</dialog>
 				</div>

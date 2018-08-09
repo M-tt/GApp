@@ -24,15 +24,55 @@ function initTestData() {
 }
 
 function initTodoListHandler() {
-    bindButtonEvents();
     loadEntriesFromStorage();
 
     initDeleteConfirmDialog();
+    initAddEntryDialog();
+}
+
+function initAddEntryDialog() {
+    let dialog = document.querySelector('#createDialog');
+
+    if (! dialog.showModal) {
+        dialogPolyfill.registerDialog(dialog);
+    }
+
+    $("#addTodoButton").click(function() {
+        dialog.showModal();
+    });
+
+    $("#newEntryCancel").click(function() {
+        let title = $("#newEntryTitle");
+        let text = $("#newEntryText");
+
+        title.val("");
+        title.parent().removeClass("is-dirty");
+
+        text.val("");
+        text.parent().removeClass("is-dirty");
+
+        dialog.close();
+    });
+
+    $("#newEntryCreate").click(function() {
+        let title = $("#newEntryTitle");
+        let text = $("#newEntryText");
+
+        createNewEntry(title.val(), text.val());
+
+        title.val("");
+        title.parent().removeClass("is-dirty");
+
+        text.val("");
+        text.parent().removeClass("is-dirty");
+
+        dialog.close();
+    });
 }
 
 function initDeleteConfirmDialog() {
     let dialogButton = document.querySelector('.dialog-button');
-    let dialog = document.querySelector('#dialog');
+    let dialog = document.querySelector('#deleteDialog');
 
     if (! dialog.showModal) {
         dialogPolyfill.registerDialog(dialog);
@@ -44,16 +84,6 @@ function initDeleteConfirmDialog() {
         .addEventListener('click', function() {
             dialog.close();
         });
-}
-
-function bindButtonEvents() {
-    $("#addTodoButton").click(function() {
-        showAddEntryDialog();
-    })
-}
-
-function showAddEntryDialog() {
-
 }
 
 function loadEntriesFromStorage() {
@@ -105,8 +135,6 @@ function appendEntryHtml(entry) {
 
     template = template.replace(/{\$state}/g, checked);
 
-    console.log(template);
-
     $("#myTodoList").append($(template));
 
     let htmlEntry = $("#" + entry.id)
@@ -114,7 +142,6 @@ function appendEntryHtml(entry) {
         let input = $(this).find("input");
         let id = input.attr("id");
 
-        console.log(input.prop("checked"));
         todoList.getEntryById(id).state = input.prop("checked");
 
         storeTodoListData();
@@ -128,12 +155,15 @@ function appendEntryHtml(entry) {
         moveHtmlEntryDown(entry.id);
     });
 
+    htmlEntry.parents("li")[0].click(function(event) {
+        event.stopPropagation();
+        htmlEntry.trigger("click");
+    });
+
     componentHandler.upgradeDom();
 }
 
 function moveHtmlEntryUp(id) {
-    console.log("Move up for " + id);
-
     if(todoList.moveEntryUpById(id)) {
         storeTodoListData();
         loadEntriesFromStorage();
@@ -141,8 +171,6 @@ function moveHtmlEntryUp(id) {
 }
 
 function moveHtmlEntryDown(id) {
-    console.log("Move down for " + id);
-
     if(todoList.moveEntryDownById(id)) {
         storeTodoListData();
         loadEntriesFromStorage();
@@ -210,7 +238,6 @@ class TodoList {
 
         if(newPos >= 0) {
             TodoList.array_move(this.entries, pos, newPos);
-            console.log("Moved + " + id + " from " + pos + " to " + newPos);
 
             return true;
         }
@@ -227,7 +254,6 @@ class TodoList {
 
         if(newPos < this.entries.length) {
             TodoList.array_move(this.entries, pos, newPos);
-            console.log("Moved + " + id + " from " + pos + " to " + newPos);
 
             return true;
         }
