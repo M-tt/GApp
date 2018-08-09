@@ -41,3 +41,7 @@ body {
     margin-bottom: 0;
     z-index: 998;
 }
+
+.mdl-ext__micro-button {
+    transform: scale(0.75,0.75) translateX(-1em);
+}

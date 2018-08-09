@@ -1,5 +1,11 @@
 var todoList;
 var listEntryTemplate = '<li class="mdl-list__item mdl-list__item--two-line"> ' +
+    '<button class="mdl-button mdl-js-button mdl-button--icon mdl-ext__micro-button">'+
+    '<i class="material-icons">keyboard_arrow_up</i>'+
+    '</button>'+
+    '<button class="mdl-button mdl-js-button mdl-button--icon mdl-ext__micro-button">'+
+    '<i class="material-icons">keyboard_arrow_down</i>'+
+    '</button>'+
     '<span class="mdl-list__item-primary-content"> ' +
     '<span>{$title}</span> ' +
     '<span class="mdl-list__item-sub-title">{$text}</span> ' +
@@ -18,7 +24,18 @@ function initTestData() {
 }
 
 function initTodoListHandler() {
+    bindButtonEvents();
     loadEntriesFromStorage();
+}
+
+function bindButtonEvents() {
+    $("#addTodoButton").click(function() {
+        showAddEntryDialog();
+    })
+}
+
+function showAddEntryDialog() {
+
 }
 
 function loadEntriesFromStorage() {
@@ -74,7 +91,8 @@ function appendEntryHtml(entry) {
 
     $("#myTodoList").append($(template));
 
-    $("#" + entry.id).parent().change(function () {
+    let htmlEntry = $("#" + entry.id)
+    htmlEntry.parent().change(function () {
         let input = $(this).find("input");
         let id = input.attr("id");
 
@@ -84,8 +102,35 @@ function appendEntryHtml(entry) {
         storeTodoListData();
     });
 
+    htmlEntry.parents("li").find(".mdl-button:contains('keyboard_arrow_up')").click(function() {
+        moveHtmlEntryUp(entry.id);
+    });
+
+    htmlEntry.parents("li").find(".mdl-button:contains('keyboard_arrow_down')").click(function() {
+        moveHtmlEntryDown(entry.id);
+    });
+
     componentHandler.upgradeDom();
 }
+
+function moveHtmlEntryUp(id) {
+    console.log("Move up for " + id);
+
+    if(todoList.moveEntryUpById(id)) {
+        storeTodoListData();
+        loadEntriesFromStorage();
+    }
+}
+
+function moveHtmlEntryDown(id) {
+    console.log("Move down for " + id);
+
+    if(todoList.moveEntryDownById(id)) {
+        storeTodoListData();
+        loadEntriesFromStorage();
+    }
+}
+
 
 function storeTodoListData() {
     console.log("Storing TodoListData");
@@ -136,5 +181,50 @@ class TodoList {
 
     getEntryById(id) {
         return this.entries.filter(e => e.id === id)[0];
+    }
+
+    moveEntryUpById(id) {
+        let entry = this.getEntryById(id);
+        if(entry === undefined) return false;
+
+        let pos = this.entries.indexOf(entry);
+        let newPos = pos-1;
+
+        if(newPos >= 0) {
+            TodoList.array_move(this.entries, pos, newPos);
+            console.log("Moved + " + id + " from " + pos + " to " + newPos);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    moveEntryDownById(id) {
+        let entry = this.getEntryById(id);
+        if(entry === undefined) return false;
+
+        let pos = this.entries.indexOf(entry);
+        let newPos = pos+1;
+
+        if(newPos < this.entries.length) {
+            TodoList.array_move(this.entries, pos, newPos);
+            console.log("Moved + " + id + " from " + pos + " to " + newPos);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    static array_move(arr, old_index, new_index) {
+        if (new_index >= arr.length) {
+            let k = new_index - arr.length + 1;
+            while (k--) {
+                arr.push(undefined);
+            }
+        }
+        arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+        return arr;
     }
 }
