@@ -135,8 +135,6 @@ function appendEntryHtml(entry) {
 
     template = template.replace(/{\$state}/g, checked);
 
-    console.log(template);
-
     $("#myTodoList").append($(template));
 
     let htmlEntry = $("#" + entry.id)
@@ -144,7 +142,6 @@ function appendEntryHtml(entry) {
         let input = $(this).find("input");
         let id = input.attr("id");
 
-        console.log(input.prop("checked"));
         todoList.getEntryById(id).state = input.prop("checked");
 
         storeTodoListData();
@@ -166,8 +163,6 @@ function appendEntryHtml(entry) {
 }
 
 function moveHtmlEntryUp(id) {
-    console.log("Move up for " + id);
-
     if(todoList.moveEntryUpById(id)) {
         storeTodoListData();
         loadEntriesFromStorage();
@@ -175,8 +170,6 @@ function moveHtmlEntryUp(id) {
 }
 
 function moveHtmlEntryDown(id) {
-    console.log("Move down for " + id);
-
     if(todoList.moveEntryDownById(id)) {
         storeTodoListData();
         loadEntriesFromStorage();
@@ -244,7 +237,6 @@ class TodoList {
 
         if(newPos >= 0) {
             TodoList.array_move(this.entries, pos, newPos);
-            console.log("Moved + " + id + " from " + pos + " to " + newPos);
 
             return true;
         }
@@ -261,7 +253,6 @@ class TodoList {
 
         if(newPos < this.entries.length) {
             TodoList.array_move(this.entries, pos, newPos);
-            console.log("Moved + " + id + " from " + pos + " to " + newPos);
 
             return true;
         }
