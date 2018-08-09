@@ -158,6 +158,10 @@ function appendEntryHtml(entry) {
         moveHtmlEntryDown(entry.id);
     });
 
+    htmlEntry.parents("li").click(function() {
+       htmlEntry.trigger("click");
+    });
+
     componentHandler.upgradeDom();
 }
 
