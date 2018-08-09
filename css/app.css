@@ -32,3 +32,12 @@ body {
     float: right;
     margin: 4px -12px 4px auto;
 }
+
+.mdl-ext__fixed-fab {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    padding-top: 24px;
+    margin-bottom: 0;
+    z-index: 998;
+}
