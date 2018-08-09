@@ -15,8 +15,11 @@
 	<link rel="stylesheet" href="../css/app.css"/>
 </head>
 <body>
-<!-- Simple header with scrollable tabs. -->
+
+
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+	
+	<!-- HEADER --------------------------------------------------------------------------------------->
 	<header class="mdl-layout__header">
 		<!-- Drawer Menu Button -->
 		<div id="drawerMenuButton" role="button" class="mdl-layout__drawer-button">
@@ -51,8 +54,10 @@
 			<a class="mdl-navigation__link" href="javascript:switchToView('aboutView')">About</a>
 		</nav>
 	</div>
-
+	
+	<!-- CONTENT --------------------------------------------------------------------------------------->
 	<main class="mdl-layout__content">
+		<!-- START VIEW --------------------------------------------------------------------------------------->
 		<section id="startView" class="bakery-view is-active">
 			<section class="mdl-layout__tab-panel is-active" id="myStartupTab">
 				<div class="page-content">
@@ -137,7 +142,8 @@
 				</div>
 			</section>
 		</section>
-
+		
+		<!-- ABOUT VIEW --------------------------------------------------------------------------------------->
 		<section id="aboutView" class="bakery-view">
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--12-col" style="text-align: center">
@@ -197,6 +203,7 @@
 			</div>
 		</section>
 
+		<!-- QUESTIONAIRE VIEW --------------------------------------------------------------------------------------->
 		<section id="questionnaireView" class="bakery-view">
 			<div class="mdl-grid">
 				<div class="mdl-layout-spacer"></div>
