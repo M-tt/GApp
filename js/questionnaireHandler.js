@@ -1,3 +1,67 @@
+
+let cardTemplate =
+    '<div id="{$id}" class="mdl-card mdl-shadow--3dp">' +
+    '<div class="mdl-card__title">' +
+    '<h2 class="mdl-card__title-text">{$title}</h2>' +
+    '</div>' +
+    '<div class="mdl-card__supporting-text">' +
+    '{$text}' +
+    '</div>' +
+    '<div class="mdl-card__actions mdl-card--border">' +
+    '<!--{$answer}-->' +
+    '</div>' +
+    '</div>' +
+    '<div>&nbsp;</div>';
+
+let answerTemplate =
+    '<div id="{$id}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="questionnaireNext(\'{$id}\')">' +
+    '{$text}' +
+    '</div>' +
+    '<!--{$answer}-->';
+
+function questionnaireNext(answerId) {
+    //maybe clean up startup "sequence" for questionnaire
+
+    let givenAnswer = answers.find(a => a.id === answerId);
+    let qContainer = $("#questionnaireQuestionContainer");
+
+    if (givenAnswer.nextItem instanceof Question) {
+        //generate new question card
+        let next = givenAnswer.nextItem;
+
+        let qTemplate = cardTemplate;
+        qTemplate = qTemplate.replace(/{\$id}/g, next.id);
+        qTemplate = qTemplate.replace(/{\$title}/g, next.title);
+        qTemplate = qTemplate.replace(/{\$text}/g, next.text);
+
+        for (let i in next.answers) {
+            let answer = next.answers[i];
+
+            let aTemplate = answerTemplate;
+
+            aTemplate = aTemplate.replace(/{\$id}/g, answer.id);
+            aTemplate = aTemplate.replace(/{\$text}/g, answer.text);
+
+            qTemplate = qTemplate.replace(/<!--{\$answer}-->/g, aTemplate);
+        }
+
+        qTemplate = qTemplate.replace(/<!--{\$answer}-->/g, "");
+
+        qContainer.append(qTemplate);
+    } else {
+        //generate result card
+        let result = givenAnswer.nextItem;
+
+        let rTemplate = cardTemplate;
+
+        rTemplate = rTemplate.replace(/{\$id}/g, result.id);
+        rTemplate = rTemplate.replace(/{\$title}/g, result.rechtsform);
+        rTemplate = rTemplate.replace(/{\$text}/g, result.text);
+
+        qContainer.html(rTemplate);
+    }
+}
+
 var questions = [];
 var answers = [];
 var results = [];
