@@ -28,6 +28,20 @@ function initTodoListHandler() {
 
     initDeleteConfirmDialog();
     initAddEntryDialog();
+    initProgressbar();
+}
+
+function initProgressbar() {
+    $("#p1").click(function() {
+        $(this).find(".progressbar").css("width", "50%");
+    })
+}
+
+function updateProgressbar() {
+    let entries = todoList.entries.length;
+    let done = todoList.entries.filter(e => e.state).length;
+
+    console.log(done + "/" + entries)
 }
 
 function initAddEntryDialog() {
@@ -137,27 +151,28 @@ function appendEntryHtml(entry) {
 
     $("#myTodoList").append($(template));
 
-    let htmlEntry = $("#" + entry.id)
-    htmlEntry.parent().change(function () {
+    let htmlEntryCheckbox = $("#" + entry.id);
+    let htmlListEntry = htmlEntryCheckbox.parents("li");
+    htmlEntryCheckbox.parent().change(function () {
         let input = $(this).find("input");
         let id = input.attr("id");
 
         todoList.getEntryById(id).state = input.prop("checked");
 
+        updateProgressbar();
         storeTodoListData();
     });
 
-    htmlEntry.parents("li").find(".mdl-button:contains('keyboard_arrow_up')").click(function() {
+    htmlListEntry.find(".mdl-button:contains('keyboard_arrow_up')").click(function() {
         moveHtmlEntryUp(entry.id);
     });
 
-    htmlEntry.parents("li").find(".mdl-button:contains('keyboard_arrow_down')").click(function() {
+    htmlListEntry.find(".mdl-button:contains('keyboard_arrow_down')").click(function() {
         moveHtmlEntryDown(entry.id);
     });
 
-    htmlEntry.parents("li")[0].click(function(event) {
-        event.stopPropagation();
-        htmlEntry.trigger("click");
+    htmlListEntry.find(".mdl-list__item-primary-content").click(function() {
+        htmlEntryCheckbox.click();
     });
 
     componentHandler.upgradeDom();
@@ -179,7 +194,7 @@ function moveHtmlEntryDown(id) {
 
 
 function storeTodoListData() {
-    console.log("Storing TodoListData");
+    console.log("Storing TodoListData...");
 
     let json = JSON.stringify(todoList);
     localStorage.setItem("myTodo", json);
