@@ -2,7 +2,7 @@ $(document).ready(function() {
     initTodoListHandler();
 });
 
-var viewsWithDrawerMenu = ["startView", "aboutView", "communityView", "matchingView"];
+var viewsWithDrawerMenu = ["startView", "aboutView", "communityView", "matchingView", "lawyerView"];
 
 var viewHistory = ["startView"];
 
