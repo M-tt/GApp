@@ -47,6 +47,29 @@ body {
     transform: scale(0.9, 0.9) translateX(-1em);
 }
 
+.mdl-ext-progresscard__title-text {
+    font-size: 1.4em;
+}
+
+.mdl-ext_progresscard__title {
+    padding-bottom: 0px;
+}
+
+.mdl-ext_progresscard__supporting-text {
+    padding-top: 4px;
+}
+
+.mdl-ext_progresscard {
+    min-height: 0;
+    height: 80px;
+    position: fixed;
+    z-index: 2;
+}
+
+.progresscard_spacer {
+    height: 60px;
+}
+
 .mdl-dialog {
     border: none;
     box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
@@ -98,4 +121,13 @@ body {
 .mdl-dialog__content {
     padding: 20px 24px 24px 24px;
     color: rgba(0, 0, 0, 0.54);
+}
+
+#myTodoProgressbar {
+    width: 100%;
+    height: 1em;
+}
+
+#myTodoList {
+    margin-top: 0px;
 }
