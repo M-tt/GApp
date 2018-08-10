@@ -22,7 +22,7 @@ function switchToView(viewId) {
     drawerButton.style = "display: none;";
     backButton.style = "display: none;";
 
-    if (viewsWithDrawerMenu.find(function(v) {return v === viewId;})) {
+    if (viewsWithDrawerMenu.find(name => name === viewId)) {
         drawerButton.style = "";
     } else {
         backButton.style = "";
