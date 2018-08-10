@@ -1,33 +1,50 @@
-var todoList;
-var listEntryTemplate = '<li class="mdl-list__item mdl-list__item--two-line"> ' +
-    '<button class="mdl-button mdl-js-button mdl-button--icon mdl-ext__micro-button">'+
-    '<i class="material-icons">keyboard_arrow_up</i>'+
-    '</button>'+
-    '<button class="mdl-button mdl-js-button mdl-button--icon mdl-ext__micro-button">'+
-    '<i class="material-icons">keyboard_arrow_down</i>'+
-    '</button>'+
+var myTodoList;
+var startupTodoList;
+var listEntryTemplate = '<li class="mdl-list__item mdl-ext_todolist__item"> ' +
+    '{$uparrowbutton}'+
+    '{$downarrowbutton}'+
     '<span class="mdl-list__item-primary-content"> ' +
-    '<span>{$title}</span> ' +
-    '<span class="mdl-list__item-sub-title">{$text}</span> ' +
+    '<span class="wrapped">{$title}</span> ' +
     '</span> ' +
     '<span class="mdl-list__item-secondary-action"> ' +
     '<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{$id}"> ' +
     '<input type="checkbox" id="{$id}" class="mdl-checkbox__input" {$state}/> </label> </span> </li>';
 
-function initTestData() {
-    todoList = new TodoList();
+var upArrowButtonTemplate = '<button class="mdl-button mdl-js-button mdl-button--icon mdl-ext__micro-button">'+
+    '<i class="material-icons">keyboard_arrow_up</i>'+
+    '</button>';
 
-    createNewEntry("a", "lorem ipsum dolor sit amet");
-    createNewEntry("b", "lorem ipsum dolor sit amet");
-    createNewEntry("c", "lorem ipsum dolor sit amet");
-    createNewEntry("d", "lorem ipsum dolor sit amet");
+var downArrowButtonTemplate = '<button class="mdl-button mdl-js-button mdl-button--icon mdl-ext__micro-button">'+
+    '<i class="material-icons">keyboard_arrow_down</i>'+
+    '</button>';
+
+function initTestData() {
+    createNewEntry("a", myTodoList, "myTodoList");
+    createNewEntry("b", myTodoList, "myTodoList");
+    createNewEntry("c", myTodoList, "myTodoList");
+    createNewEntry("d", myTodoList, "myTodoList");
 }
 
 function initTodoListHandler() {
-    loadEntriesFromStorage();
+    loadMyTodoListEntriesFromStorage();
+    loadStartupTodoListEntriesFromStorage();
 
-    initDeleteConfirmDialog();
+    initDeleteAllDialog();
     initAddEntryDialog();
+    initProgressbars();
+}
+
+function initProgressbars() {
+    updateProgressbar("myTodoProgressbar", myTodoList);
+    updateProgressbar("startupTodoProgressbar", startupTodoList);
+}
+
+function updateProgressbar(id, list) {
+    let entries = list.entries.length;
+    let done = list.entries.filter(e => e.state).length;
+    let val = (done / entries) * 100;
+
+    $("#"+id+">.progressbar").css("width", val + "%");
 }
 
 function initAddEntryDialog() {
@@ -56,63 +73,114 @@ function initAddEntryDialog() {
 
     $("#newEntryCreate").click(function() {
         let title = $("#newEntryTitle");
-        let text = $("#newEntryText");
+        //let text = $("#newEntryText");
 
-        createNewEntry(title.val(), text.val());
+        createNewEntry(title.val(), myTodoList, "myTodoList");
 
         title.val("");
         title.parent().removeClass("is-dirty");
 
-        text.val("");
-        text.parent().removeClass("is-dirty");
+        //text.val("");
+        //text.parent().removeClass("is-dirty");
 
         dialog.close();
     });
 }
 
-function initDeleteConfirmDialog() {
-    let dialogButton = document.querySelector('.dialog-button');
+function initDeleteAllDialog() {
     let dialog = document.querySelector('#deleteDialog');
 
     if (! dialog.showModal) {
         dialogPolyfill.registerDialog(dialog);
     }
-    dialogButton.addEventListener('click', function() {
+
+    $("#deleteAllButton").click(() => {
         dialog.showModal();
     });
-    dialog.querySelector('button:not([disabled])')
-        .addEventListener('click', function() {
-            dialog.close();
+
+    $("#deleteAllConfirm").click(() => {
+        let ids = myTodoList.entries.map(e => e.id);
+
+        ids.forEach(id => {
+            deleteEntryById(id);
         });
-}
 
-function loadEntriesFromStorage() {
-    loadTodoListData();
+        dialog.close();
+    });
 
-    cleanupEntryHtml();
-    todoList.entries.forEach(entry => {
-        appendEntryHtml(entry);
+    $("#deleteAllCancel").click(() => {
+        dialog.close();
     })
 }
 
-function createNewEntry(title, text) {
-    const entry = new TodoListEntry(title, text, false);
+function loadMyTodoListEntriesFromStorage() {
+    myTodoList = loadTodoListData("myTodo");
+    cleanupEntryHtml("myTodoList");
+    myTodoList.entries.forEach(entry => {
+        appendEntryHtml(entry, "myTodoList", myTodoList);
+    });
+}
+
+function loadStartupTodoListEntriesFromStorage() {
+    startupTodoList = loadTodoListData("startupTodo");
+    cleanupEntryHtml("startupTodoList");
+
+    if(startupTodoList.entries.length === 0) {
+        initStartupTodoListEntries();
+    } else {
+        startupTodoList.entries.forEach(entry => {
+            appendEntryHtml(entry, "startupTodoList", startupTodoList, true);
+        });
+    }
+}
+
+function initStartupTodoListEntries() {
+    newStartupEntry("Businessplan aufstellen");
+    newStartupEntry("Finanzierung absichern");
+    newStartupEntry("Versicherungen abklären");
+    newStartupEntry("Genehmigungpflicht prüfen");
+    newStartupEntry("Rechtsform wählen");
+    newStartupEntry("Standort festsetzen");
+    newStartupEntry("Unternehmen anmelden");
+}
+
+function newStartupEntry(title) {
+    createNewEntry(title, startupTodoList, "startupTodoList", true);
+}
+
+function handleChangedTodoListData(listId) {
+    switch(listId) {
+        case "myTodoList":
+            storeTodoListData("myTodo", myTodoList);
+            updateProgressbar("myTodoProgressbar", myTodoList);
+            break;
+        case "startupTodoList":
+            storeTodoListData("startupTodo", startupTodoList);
+            updateProgressbar("startupTodoProgressbar", startupTodoList);
+            break;
+        default:
+    }
+}
+
+function createNewEntry(title, todoList, htmlId, simple = false) {
+    const entry = new TodoListEntry(title, false);
 
     todoList.add(entry);
-    appendEntryHtml(entry);
+    appendEntryHtml(entry, htmlId, todoList, simple);
 
-    storeTodoListData();
+    handleChangedTodoListData(htmlId);
 }
+
 
 function deleteEntryById(id) {
-    todoList.removeEntryById(id);
+    myTodoList.removeEntryById(id);
     removeEntryHtmlById(id);
 
-    storeTodoListData();
+    handleChangedTodoListData("myTodoList");
 }
 
-function cleanupEntryHtml() {
-    $("#myTodoList").empty();
+function cleanupEntryHtml(todoListId) {
+    $("#" + todoListId).empty();
 }
 
 function removeEntryHtmlById(id) {
@@ -121,7 +189,7 @@ function removeEntryHtmlById(id) {
     $(idString).parents("li").remove();
 }
 
-function appendEntryHtml(entry) {
+function appendEntryHtml(entry, todoListId, todoList, simple = false) {
     let template = listEntryTemplate;
 
     template = template.replace(/{\$title}/g, entry.title);
@@ -135,140 +203,53 @@ function appendEntryHtml(entry) {
 
     template = template.replace(/{\$state}/g, checked);
 
-    $("#myTodoList").append($(template));
+    //insert arrows if not simple
+    if(!simple) {
+        template = template.replace(/{\$uparrowbutton}/g, upArrowButtonTemplate);
+        template = template.replace(/{\$downarrowbutton}/g, downArrowButtonTemplate);
+    } else {
+        template = template.replace(/{\$uparrowbutton}/g, "");
+        template = template.replace(/{\$downarrowbutton}/g, "");
+    }
 
-    let htmlEntry = $("#" + entry.id)
-    htmlEntry.parent().change(function () {
+    $("#" + todoListId).append($(template));
+
+    let htmlEntryCheckbox = $("#" + entry.id);
+    let htmlListEntry = htmlEntryCheckbox.parents("li");
+    htmlEntryCheckbox.parent().change(function () {
         let input = $(this).find("input");
         let id = input.attr("id");
 
         todoList.getEntryById(id).state = input.prop("checked");
 
-        storeTodoListData();
+        handleChangedTodoListData(todoListId);
     });
 
-    htmlEntry.parents("li").find(".mdl-button:contains('keyboard_arrow_up')").click(function() {
+    htmlListEntry.find(".mdl-button:contains('keyboard_arrow_up')").click(function() {
         moveHtmlEntryUp(entry.id);
     });
 
-    htmlEntry.parents("li").find(".mdl-button:contains('keyboard_arrow_down')").click(function() {
+    htmlListEntry.find(".mdl-button:contains('keyboard_arrow_down')").click(function() {
         moveHtmlEntryDown(entry.id);
     });
 
-    htmlEntry.parents("li")[0].click(function(event) {
-        event.stopPropagation();
-        htmlEntry.trigger("click");
+    htmlListEntry.find(".mdl-list__item-primary-content").click(function() {
+        htmlEntryCheckbox.click();
     });
 
     componentHandler.upgradeDom();
 }
 
 function moveHtmlEntryUp(id) {
-    if(todoList.moveEntryUpById(id)) {
-        storeTodoListData();
-        loadEntriesFromStorage();
+    if(myTodoList.moveEntryUpById(id)) {
+        handleChangedTodoListData("myTodoList");
+        loadMyTodoListEntriesFromStorage();
     }
 }
 
 function moveHtmlEntryDown(id) {
-    if(todoList.moveEntryDownById(id)) {
-        storeTodoListData();
-        loadEntriesFromStorage();
-    }
-}
-
-
-function storeTodoListData() {
-    console.log("Storing TodoListData");
-
-    let json = JSON.stringify(todoList);
-    localStorage.setItem("myTodo", json);
-}
-
-function loadTodoListData() {
-    let json = localStorage.getItem("myTodo");
-    let jsonObject = JSON.parse(json);
-    todoList = Object.assign(new TodoList, jsonObject);
-
-    if(todoList === null) {
-        todoList = new TodoList();
-    }
-}
-
-class TodoListEntry {
-    constructor(title, text, state) {
-        this.id = guid();
-        this.title = title;
-        this.text = text;
-        this.state = state;
-    }
-}
-
-class TodoList {
-    constructor() {
-        this.entries = []
-    }
-
-    add(entry) {
-        this.entries.push(entry);
-    }
-
-    removeEntryById(id) {
-        const result = this.entries.filter(e => e.id === id);
-
-        if(result.length > 0) {
-            let i = this.entries.indexOf(result[0]);
-
-            if(i !== -1) {
-                this.entries.splice(i, 1);
-            }
-        }
-    }
-
-    getEntryById(id) {
-        return this.entries.filter(e => e.id === id)[0];
-    }
-
-    moveEntryUpById(id) {
-        let entry = this.getEntryById(id);
-        if(entry === undefined) return false;
-
-        let pos = this.entries.indexOf(entry);
-        let newPos = pos-1;
-
-        if(newPos >= 0) {
-            TodoList.array_move(this.entries, pos, newPos);
-
-            return true;
-        }
-
-        return false;
-    }
-
-    moveEntryDownById(id) {
-        let entry = this.getEntryById(id);
-        if(entry === undefined) return false;
-
-        let pos = this.entries.indexOf(entry);
-        let newPos = pos+1;
-
-        if(newPos < this.entries.length) {
-            TodoList.array_move(this.entries, pos, newPos);
-
-            return true;
-        }
-
-        return false;
-    }
-
-    static array_move(arr, old_index, new_index) {
-        if (new_index >= arr.length) {
-            let k = new_index - arr.length + 1;
-            while (k--) {
-                arr.push(undefined);
-            }
-        }
-        arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-        return arr;
+    if(myTodoList.moveEntryDownById(id)) {
+        handleChangedTodoListData("myTodoList");
+        loadMyTodoListEntriesFromStorage();
     }
 }

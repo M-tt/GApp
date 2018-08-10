@@ -12,7 +12,8 @@
 	
 	<link rel="manifest" href="../manifest.json">
 	<link rel="stylesheet" href="../libs/mdl/material.blue_grey-amber.min.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+	<link rel="stylesheet" href="../libs/iconfont/material-icons.css">
 
 	<link rel="stylesheet" href="../css/app.css"/>
 </head>
@@ -42,7 +43,8 @@
 
 		<!-- Tabs -->
 		<div id="startViewTabBar" class="mdl-layout__tab-bar mdl-js-ripple-effect">
-			<a href="#myStartupTab" class="mdl-layout__tab is-active">Mein Startup</a>
+			<a href="#homeTab" class="mdl-layout__tab is-active">Start</a>
+			<a href="#myStartupTab" class="mdl-layout__tab">Mein Startup</a>
 			<a href="#myTodosTab" class="mdl-layout__tab">Meine To-Dos</a>
 		</div>
 	</header>
@@ -51,8 +53,9 @@
 		<span class="mdl-layout-title">Hauptmenü</span>
 		<nav class="mdl-navigation">
 			<a class="mdl-navigation__link" href="javascript:switchToView('startView')">Mein Startup</a>
-			<a class="mdl-navigation__link" href="#">Community</a> <a class="mdl-navigation__link" href="#">Matching</a>
-			<a class="mdl-navigation__link" href="#">Anwaltsuche</a>
+			<a class="mdl-navigation__link" href="javascript:switchToView('communityView')">Community</a>
+			<a class="mdl-navigation__link" href="javascript:switchToView('matchingView')">Matching</a>
+			<a class="mdl-navigation__link" href="javascript:switchToView('lawyerView')">Anwaltsuche</a>
 			<a class="mdl-navigation__link" href="javascript:switchToView('aboutView')">About</a>
 		</nav>
 	</div>
@@ -62,61 +65,99 @@
 		<!-- START VIEW --------------------------------------------------------------------------------------->
 		<section id="startView" class="bakery-view is-active">
 			
-			<!-- MY STARTUP TAB --------------------------------------------------------------------------------------->
-			<section class="mdl-layout__tab-panel is-active" id="myStartupTab">
+			<!-- HOME TAB --------------------------------------------------------------------------------------->
+			<section class="mdl-layout__tab-panel is-active" id="homeTab">
 				<div class="page-content">
+					<div class="mdl-grid mdl-ext-infogrid">
+						<div class="mdl-cell mdl-cell--6-col ">
+							<div class="mdl-card mdl-shadow--3dp mdl-ext_infocard">
+								<div class="mdl-card__title mdl-ext-infocard__title">
+									<h2 class="mdl-card__title-text mdl-ext-infocard__title-text">Unterstützung bei der Wahl der Rechtsform gefällig?</h2>
+								</div>
+								<div class="mdl-card__supporting-text mdl-ext-infocard__supporting-text">
+									Vielleicht können wir mit unserem Questionnaire bei der Wahl einer geeigneten Rechtsform helfen.
+								</div>
+								<div class="mdl-card__actions mdl-card--border">
+									<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+									   href="javascript:switchToView('questionnaireView')">
+										Questionnaire starten
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet">
+							<div class="mdl-card mdl-shadow--3dp mdl-ext_infocard">
+								<div class="mdl-card__title mdl-ext-infocard__title">
+									<h2 class="mdl-card__title-text mdl-ext-infocard__title-text">Was ist denn überhaupt ein Businessplan?</h2>
+								</div>
+								<div class="mdl-card__supporting-text mdl-ext-infocard__supporting-text">
+									Auf deutsch wäre das der Geschäftsplan (engl. business plan).
+									Laut Wikipedia ist dies ein schriftliches Dokument mit 10 bis 50 Seiten,
+									das eine Geschäftsmöglichkeit sowie Maßnahmen beschreibt, die zu ergreifen sind,
+									um diese Chance zu nutzen.
+								</div>
+								<div class="mdl-card__actions mdl-card--border">
+									<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+									   href="https://de.wikipedia.org/wiki/Gesch%C3%A4ftsplan"
+									   target="_blank">
+										Mehr Informationen
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet">
+							<div class="mdl-card mdl-shadow--3dp mdl-ext_infocard">
+								<div class="mdl-card__title mdl-ext-infocard__title">
+									<h2 class="mdl-card__title-text mdl-ext-infocard__title-text">Wie finde ich heraus wie man ein Start-Up finanziert?</h2>
+								</div>
+								<div class="mdl-card__supporting-text mdl-ext-infocard__supporting-text">
+									Der einfachste Weg ist der Gang zum Fachmann. Erste Informationen kann man sich jedoch
+									auch schon bei Google holen. Eine mögliche Suche wäre: "finanzierung eines start-ups".
+								</div>
+								<div class="mdl-card__actions mdl-card--border">
+									<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+									   href="https://www.google.de/search?q=finanzierung+eines+start-ups"
+									   target="_blank">
+										Bei Google suchen
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet">
+							<div class="mdl-card mdl-shadow--3dp mdl-ext_infocard">
+								<div class="mdl-card__title mdl-ext-infocard__title">
+									<h2 class="mdl-card__title-text mdl-ext-infocard__title-text">Informationen zur Standortwahl</h2>
+								</div>
+								<div class="mdl-card__supporting-text mdl-ext-infocard__supporting-text">
+									Zur Standortwahl wurden im Internet viele Blog-Einträge und Artikel verfasst.
+									Bei starting-up.de findet man zum Beispiel Informationen zu wichtigen Faktoren bei der Standortwahl.
+								</div>
+								<div class="mdl-card__actions mdl-card--border">
+									<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+									   href="https://www.starting-up.de/gruenden/standort/5-wichtige-faktoren-zur-standortwahl.html"
+									   target="_blank">
+										Artikel öffnen
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<!-- MY STARTUP TAB --------------------------------------------------------------------------------------->
+			<section class="mdl-layout__tab-panel" id="myStartupTab">
+				<div class="page-content">
+					<div class="mdl-card mdl-shadow--2dp mdl-ext_progresscard">
+						<div class="mdl-card__supporting-text mdl-ext_progresscard__supporting-text">
+							<div id="startupTodoProgressbar" class="mdl-progress mdl-js-progress"></div>
+						</div>
+					</div>
 					<div class="mdl-grid">
 						<div class="mdl-layout-spacer"></div>
 						<div class="mdl-cell mdl-cell--8-col">
-							<ul class="checklist-control mdl-list">
-								<li class="mdl-list__item mdl-list__item--three-line">
-									<span class="mdl-list__item-primary-content">
-										<span>Startup Namen festlegen</span>
-										<span class="mdl-list__item-text-body">
-											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-										</span>
-									</span> <span class="mdl-list__item-secondary-action">
-									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox1">
-										<input type="checkbox" id="checkbox1" class="mdl-checkbox__input" checked/>
-									</label>
-								</span>
-								</li>
-								<li class="mdl-list__item mdl-list__item--two-line">
-									<span class="mdl-list__item-primary-content">
-										<span>Machbarkeitsprüfung durchführen</span>
-										<span class="mdl-list__item-sub-title">
-											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-										</span>
-									</span> <span class="mdl-list__item-secondary-action">
-									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox2">
-										<input type="checkbox" id="checkbox2" class="mdl-checkbox__input" checked/>
-									</label>
-								</span>
-								</li>
-								<li class="mdl-list__item mdl-list__item--three-line">
-									<span class="mdl-list__item-primary-content">
-										<span>Businessplan ausarbeiten</span>
-										<span class="mdl-list__item-text-body">
-											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-										</span>
-									</span> <span class="mdl-list__item-secondary-action">
-									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox3">
-										<input type="checkbox" id="checkbox3" class="mdl-checkbox__input" checked/>
-									</label>
-								</span>
-								</li>
-								<li class="mdl-list__item mdl-list__item--three-line">
-									<span class="mdl-list__item-primary-content">
-										<span>Rechtsform wählen</span>
-										<span class="mdl-list__item-text-body">
-											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-										</span>
-									</span> <span class="mdl-list__item-secondary-action">
-									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox4">
-										<input type="checkbox" id="checkbox4" class="mdl-checkbox__input" onclick="switchToView('questionnaireView')"/>
-									</label>
-								</span>
-								</li>
+							<ul class="checklist-control mdl-list" id="startupTodoList">
+							
 							</ul>
 						</div>
 						<div class="mdl-layout-spacer"></div>
@@ -127,6 +168,12 @@
 			<!-- MY TODOS TAB --------------------------------------------------------------------------------------->
 			<section class="mdl-layout__tab-panel" id="myTodosTab">
 				<div class="page-content">
+					<div class="mdl-card mdl-shadow--2dp mdl-ext_progresscard">
+						<div class="mdl-card__supporting-text mdl-ext_progresscard__supporting-text">
+							<div id="myTodoProgressbar" class="mdl-progress mdl-js-progress"></div>
+						</div>
+					</div>
+					<div class="progresscard_spacer"></div>
 					<div class="mdl-grid">
 						<div class="mdl-layout-spacer"></div>
 						<div class="mdl-cell mdl-cell--8-col">
@@ -137,24 +184,25 @@
 						<div class="mdl-layout-spacer"></div>
 					</div>
 					
+					<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-ext__fixed-fab mdl-color--red" id="deleteAllButton">
+						<i class="material-icons">delete</i>
+					</button>
+					
 					<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-ext__fixed-fab" id="addTodoButton">
 						<i class="material-icons">add</i>
 					</button>
 					
-					<!-- DELETE CONFIRM DIALOG ------------------------------------------------------->
-					<button class="mdl-button mdl-button--raised mdl-js-button dialog-button">Show Dialog</button>
-					
+					<!-- DELETE ALL CONFIRM DIALOG ------------------------------------------------------->
 					<dialog id="deleteDialog" class="mdl-dialog">
-						<h3 class="mdl-dialog__title">MDL Dialog</h3>
+						<h3 class="mdl-dialog__title">Liste löschen</h3>
 						<div class="mdl-dialog__content">
 							<p>
-								This is an example of the Material Design Lite dialog component.
-								Please use responsibly.
+								Sollen alle Einträge der Liste gelöscht werden?
 							</p>
 						</div>
 						<div class="mdl-dialog__actions">
-							<button type="button" class="mdl-button">Close</button>
-							<button type="button" class="mdl-button" disabled>Disabled action</button>
+							<button type="button" class="mdl-button mdl-color-text--red" id="deleteAllConfirm">Alle Löschen</button>
+							<button type="button" class="mdl-button" id="deleteAllCancel">Abbrechen</button>
 						</div>
 					</dialog>
 					
@@ -166,12 +214,6 @@
 								<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 									<input class="mdl-textfield__input" type="text" id="newEntryTitle">
 									<label class="mdl-textfield__label" for="newEntryTitle">Titel...</label>
-								</div>
-							</form>
-							<form action="#">
-								<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-									<input class="mdl-textfield__input" type="text" id="newEntryText">
-									<label class="mdl-textfield__label" for="newEntryText">Beschreibung...</label>
 								</div>
 							</form>
 						</div>
@@ -238,13 +280,18 @@
 						<a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from
 						<a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by
 						<a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0"
-						   target="_blank">CC 3.0 BY</a>
+						   target="_blank">CC 3.0 BY</a>.
+					</div>
+					<div>
+						<br>
+						Material Design Icons made by Google. Licensed under
+						<a href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License Version 2.0</a>.
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- QUESTIONAIRE VIEW --------------------------------------------------------------------------------------->
+		<!-- QUESTIONNAIRE VIEW --------------------------------------------------------------------------------------->
 		<section id="questionnaireView" class="bakery-view">
 			<div class="mdl-grid">
 				<div class="mdl-layout-spacer"></div>
@@ -269,6 +316,55 @@
 				<div class="mdl-layout-spacer"></div>
 			</div>
 		</section>
+		
+		<!-- COMMUNITY VIEW --------------------------------------------------------------------------------------->
+		<section id="communityView" class="bakery-view">
+			<div class="mdl-grid">
+				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-cell mdl-cell--6-col">
+					<div class="mdl-typography--text-center">
+						<i class="material-icons background-icon background-text">forum</i>
+						<div class="background-text">
+							Hier kannst du dich demnächst mit anderen Gründungsinteressierten austauschen!
+						</div>
+					</div>
+				</div>
+				<div class="mdl-layout-spacer"></div>
+			</div>
+		</section>
+		
+		<!-- MATCHING VIEW --------------------------------------------------------------------------------------->
+		<section id="matchingView" class="bakery-view">
+			<div class="mdl-grid">
+				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-cell mdl-cell--6-col">
+					<div class="mdl-typography--text-center">
+						<i class="material-icons background-icon background-text">people</i>
+						<div class="background-text">
+							In Zukunft können sich hier potentielle Gründer mit Lösungen und Unternehmen mit Problemen vernetzen!
+						</div>
+					</div>
+				</div>
+				<div class="mdl-layout-spacer"></div>
+			</div>
+		</section>
+		
+		<!-- LAWYER VIEW --------------------------------------------------------------------------------------->
+		<section id="lawyerView" class="bakery-view">
+			<div class="mdl-grid">
+				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-cell mdl-cell--6-col">
+					<div class="mdl-typography--text-center">
+						<i class="material-icons background-icon background-text">search</i>
+						<div class="background-text">
+							Bald ist es hier für dich bequem und schnell möglich einen zu dir und deinem Start-Up passenden
+							Anwalt zu suchen.
+						</div>
+					</div>
+				</div>
+				<div class="mdl-layout-spacer"></div>
+			</div>
+		</section>
 	</main>
 </div>
 
@@ -276,7 +372,9 @@
 <script src="../libs/dialogPolyfill/dialog-polyfill.js"></script>
 <script src="../libs/mdl/material.js"></script>
 <script src="../js/app.js"></script>
+<script src="../js/todoList.js"></script>
 <script src="../js/todoListHandler.js"></script>
 <script src="../js/questionnaireHandler.js"></script>
+
 </body>
 </html>
