@@ -32,16 +32,15 @@ function initTodoListHandler() {
 }
 
 function initProgressbar() {
-    $("#p1").click(function() {
-        $(this).find(".progressbar").css("width", "50%");
-    })
+    updateProgressbar();
 }
 
 function updateProgressbar() {
     let entries = todoList.entries.length;
     let done = todoList.entries.filter(e => e.state).length;
+    let val = (done / entries) * 100;
 
-    console.log(done + "/" + entries)
+    $("#myTodoProgressbar>.progressbar").css("width", val + "%");
 }
 
 function initAddEntryDialog() {
@@ -109,20 +108,25 @@ function loadEntriesFromStorage() {
     })
 }
 
+function handleChangedTodoListData() {
+    storeTodoListData();
+    updateProgressbar();
+}
+
 function createNewEntry(title, text) {
     const entry = new TodoListEntry(title, text, false);
 
     todoList.add(entry);
     appendEntryHtml(entry);
 
-    storeTodoListData();
+    handleChangedTodoListData()
 }
 
 function deleteEntryById(id) {
     todoList.removeEntryById(id);
     removeEntryHtmlById(id);
 
-    storeTodoListData();
+    handleChangedTodoListData()
 }
 
 function cleanupEntryHtml() {
@@ -159,8 +163,7 @@ function appendEntryHtml(entry) {
 
         todoList.getEntryById(id).state = input.prop("checked");
 
-        updateProgressbar();
-        storeTodoListData();
+        handleChangedTodoListData();
     });
 
     htmlListEntry.find(".mdl-button:contains('keyboard_arrow_up')").click(function() {
@@ -180,14 +183,14 @@ function appendEntryHtml(entry) {
 
 function moveHtmlEntryUp(id) {
     if(todoList.moveEntryUpById(id)) {
-        storeTodoListData();
+        handleChangedTodoListData();
         loadEntriesFromStorage();
     }
 }
 
 function moveHtmlEntryDown(id) {
     if(todoList.moveEntryDownById(id)) {
-        storeTodoListData();
+        handleChangedTodoListData();
         loadEntriesFromStorage();
     }
 }
