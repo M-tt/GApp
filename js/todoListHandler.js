@@ -141,7 +141,7 @@ function initStartupTodoListEntries() {
     newStartupEntry("Genehmigungpflicht prüfen");
     newStartupEntry("Rechtsform wählen");
     newStartupEntry("Standort festsetzen");
-    newStartupEntry("Unternehmung anmelden");
+    newStartupEntry("Unternehmen anmelden");
 }
 
 function newStartupEntry(title) {

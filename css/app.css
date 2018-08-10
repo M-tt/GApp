@@ -148,3 +148,11 @@ body {
     overflow-wrap: break-word;
     white-space: normal;
 }
+
+.background-icon {
+    font-size: 230px;
+}
+
+.background-text {
+    color: lightslategray;
+}

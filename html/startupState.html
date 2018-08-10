@@ -12,7 +12,8 @@
 	
 	<link rel="manifest" href="../manifest.json">
 	<link rel="stylesheet" href="../libs/mdl/material.blue_grey-amber.min.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+	<link rel="stylesheet" href="../libs/iconfont/material-icons.css">
 
 	<link rel="stylesheet" href="../css/app.css"/>
 </head>
@@ -51,7 +52,8 @@
 		<span class="mdl-layout-title">Hauptmenü</span>
 		<nav class="mdl-navigation">
 			<a class="mdl-navigation__link" href="javascript:switchToView('startView')">Mein Startup</a>
-			<a class="mdl-navigation__link" href="#">Community</a> <a class="mdl-navigation__link" href="#">Matching</a>
+			<a class="mdl-navigation__link" href="javascript:switchToView('communityView')">Community</a>
+			<a class="mdl-navigation__link" href="javascript:switchToView('matchingView')">Matching</a>
 			<a class="mdl-navigation__link" href="javascript:switchToView('questionnaireView')">Anwaltsuche</a>
 			<a class="mdl-navigation__link" href="javascript:switchToView('aboutView')">About</a>
 		</nav>
@@ -197,7 +199,12 @@
 						<a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from
 						<a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by
 						<a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0"
-						   target="_blank">CC 3.0 BY</a>
+						   target="_blank">CC 3.0 BY</a>.
+					</div>
+					<div>
+						<br>
+						Material Design Icons made by Google. Licensed under
+						<a href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License Version 2.0</a>.
 					</div>
 				</div>
 			</div>
@@ -225,6 +232,38 @@
 						</div>
 					</div>
 					<div> &nbsp;</div>
+				</div>
+				<div class="mdl-layout-spacer"></div>
+			</div>
+		</section>
+		
+		<!-- COMMUNITY VIEW --------------------------------------------------------------------------------------->
+		<section id="communityView" class="bakery-view">
+			<div class="mdl-grid">
+				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-cell mdl-cell--6-col">
+					<div class="mdl-typography--text-center">
+						<i class="material-icons background-icon background-text">forum</i>
+						<div class="background-text">
+							Hier kannst du dich demnächst mit anderen Gründungsinteressierten austauschen!
+						</div>
+					</div>
+				</div>
+				<div class="mdl-layout-spacer"></div>
+			</div>
+		</section>
+		
+		<!-- MATCHING VIEW --------------------------------------------------------------------------------------->
+		<section id="matchingView" class="bakery-view">
+			<div class="mdl-grid">
+				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-cell mdl-cell--6-col">
+					<div class="mdl-typography--text-center">
+						<i class="material-icons background-icon background-text">people</i>
+						<div class="background-text">
+							In Zukunft können sich hier potentielle Gründer mit Lösungen und Unternehmen mit Problemen vernetzen!
+						</div>
+					</div>
 				</div>
 				<div class="mdl-layout-spacer"></div>
 			</div>
