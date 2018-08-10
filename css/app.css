@@ -156,3 +156,25 @@ body {
 .background-text {
     color: lightslategray;
 }
+
+.mdl-ext_infocard {
+    width: 100%;
+
+}
+
+.mdl-ext-infogrid {
+    max-width: 1200px;
+}
+
+.mdl-ext-infocard__supporting-text {
+    min-height: 100px;
+}
+
+.mdl-ext-infocard__title {
+    min-height: 90px;
+
+}
+
+.mdl-ext-infocard__title-text {
+
+}
