@@ -28,6 +28,11 @@ body {
     min-height: 150px;
 }
 
+.questionnaire-card {
+    width: 100%;
+    min-height: 100px;
+}
+
 .chefs-hat {
     max-height: 48px;
     float: right;

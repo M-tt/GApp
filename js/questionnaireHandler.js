@@ -1,6 +1,6 @@
 
 let cardTemplate =
-    '<div id="{$id}" class="mdl-card mdl-shadow--3dp">' +
+    '<div id="{$id}" class="mdl-card mdl-shadow--3dp questionnaire-card">' +
     '<div class="mdl-card__title">' +
     '<h2 class="mdl-card__title-text">{$title}</h2>' +
     '</div>' +
@@ -10,20 +10,22 @@ let cardTemplate =
     '<div class="mdl-card__actions mdl-card--border">' +
     '<!--{$answer}-->' +
     '</div>' +
-    '</div>' +
-    '<div>&nbsp;</div>';
+    '</div>';
 
 let buttonTemplate =
     '<div id="{$id}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="questionnaireNext(\'{$id}\')">' +
     '{$text}' +
-    '</div>' +
+    '</div> ' +
     '<!--{$answer}-->';
+
+let visibleCards = [];
 
 function questionnaireNext(answerId) {
     //maybe clean up startup "sequence" for questionnaire
 
     let givenAnswer = answers.find(a => a.id === answerId);
     let qContainer = $("#questionnaireQuestionContainer");
+    let newCard = {};
 
     if (givenAnswer.nextItem instanceof Question) {
         //generate new question card
@@ -47,8 +49,7 @@ function questionnaireNext(answerId) {
 
         qTemplate = qTemplate.replace(/<!--{\$answer}-->/g, "");
 
-        qContainer.append(qTemplate);
-
+        newCard = $(qTemplate).appendTo(qContainer);
     } else {
         //generate result card
         let result = givenAnswer.nextItem;
@@ -67,15 +68,32 @@ function questionnaireNext(answerId) {
         rTemplate = rTemplate.replace(/<!--{\$answer}-->/g, bTemplate);
         rTemplate = rTemplate.replace(/<!--{\$answer}-->/g, "");
 
-        qContainer.append(rTemplate);
+        newCard = $(rTemplate).appendTo(qContainer);
     }
 
+    let offset = (window.innerWidth + 20) + "px";
+
+    let previousCard = visibleCards.pop();
+    visibleCards.push(previousCard);
+    visibleCards.push(newCard);
+
     componentHandler.upgradeDom();
+
+    newCard[0].style = "top: -" + previousCard.outerHeight() + "px";
+    newCard.animate({left: "+=" + offset}, 0, "swing");
+    newCard.animate({left: "-=" + offset}, 400, "swing");
+
+    previousCard.animate({left: "-" + offset}, 400, "swing", function() {
+        visibleCards[0].remove();
+        newCard[0].style = "";
+        visibleCards.shift();
+    });
 }
 
-var questions = [];
-var answers = [];
-var results = [];
+
+let questions = [];
+let answers = [];
+let results = [];
 
 class Question {
     constructor(id, answerIds, title, text) {
@@ -146,3 +164,5 @@ results.push(new Result("rGmbH", "GmbH", "Du bist eine GmbH! Nach mir die Sintfl
 
 questions.forEach(q => q.fetchAnswers());
 answers.forEach(a => a.fetchNextItem());
+
+visibleCards.push($("#qStart"));
