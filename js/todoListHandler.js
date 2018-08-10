@@ -18,8 +18,6 @@ var downArrowButtonTemplate = '<button class="mdl-button mdl-js-button mdl-butto
     '</button>';
 
 function initTestData() {
-    myTodoList = new TodoList();
-
     createNewEntry("a", "lorem ipsum dolor sit amet");
     createNewEntry("b", "lorem ipsum dolor sit amet");
     createNewEntry("c", "lorem ipsum dolor sit amet");
@@ -29,7 +27,7 @@ function initTestData() {
 function initTodoListHandler() {
     loadMyTodoListEntriesFromStorage();
 
-    initDeleteConfirmDialog();
+    initDeleteAllDialog();
     initAddEntryDialog();
     initProgressbar();
 }
@@ -72,34 +70,44 @@ function initAddEntryDialog() {
 
     $("#newEntryCreate").click(function() {
         let title = $("#newEntryTitle");
-        let text = $("#newEntryText");
+        //let text = $("#newEntryText");
 
-        createNewEntry(title.val(), text.val());
+        createNewEntry(title.val());
 
         title.val("");
         title.parent().removeClass("is-dirty");
 
-        text.val("");
-        text.parent().removeClass("is-dirty");
+        //text.val("");
+        //text.parent().removeClass("is-dirty");
 
         dialog.close();
     });
 }
 
-function initDeleteConfirmDialog() {
-    let dialogButton = document.querySelector('.dialog-button');
+function initDeleteAllDialog() {
     let dialog = document.querySelector('#deleteDialog');
 
     if (! dialog.showModal) {
         dialogPolyfill.registerDialog(dialog);
     }
-    dialogButton.addEventListener('click', function() {
+
+    $("#deleteAllButton").click(() => {
         dialog.showModal();
     });
-    dialog.querySelector('button:not([disabled])')
-        .addEventListener('click', function() {
-            dialog.close();
+
+    $("#deleteAllConfirm").click(() => {
+        let ids = myTodoList.entries.map(e => e.id);
+
+        ids.forEach(id => {
+            deleteEntryById(id);
         });
+
+        dialog.close();
+    });
+
+    $("#deleteAllCancel").click(() => {
+        dialog.close();
+    })
 }
 
 function loadMyTodoListEntriesFromStorage() {
@@ -115,8 +123,8 @@ function handleChangedTodoListData() {
     updateProgressbar();
 }
 
-function createNewEntry(title, text) {
-    const entry = new TodoListEntry(title, text, false);
+function createNewEntry(title) {
+    const entry = new TodoListEntry(title, false);
 
     myTodoList.add(entry);
     appendEntryHtml(entry, "myTodoList");
@@ -132,7 +140,7 @@ function deleteEntryById(id) {
     myTodoList.removeEntryById(id);
     removeEntryHtmlById(id);
 
-    handleChangedTodoListData()
+    handleChangedTodoListData();
 }
 
 function cleanupEntryHtml(todoListId) {

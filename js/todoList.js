@@ -1,5 +1,5 @@
 class TodoListEntry {
-    constructor(title, text, state) {
+    constructor(title, text = "", state) {
         this.id = guid();
         this.title = title;
         this.text = text;
@@ -18,6 +18,10 @@ class TodoList {
 
     removeEntryById(id) {
         const result = this.entries.filter(e => e.id === id);
+
+        if(result.length > 1) {
+            console.log("res >1");
+        }
 
         if(result.length > 0) {
             let i = this.entries.indexOf(result[0]);
