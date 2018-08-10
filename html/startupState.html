@@ -52,7 +52,7 @@
 		<nav class="mdl-navigation">
 			<a class="mdl-navigation__link" href="javascript:switchToView('startView')">Mein Startup</a>
 			<a class="mdl-navigation__link" href="#">Community</a> <a class="mdl-navigation__link" href="#">Matching</a>
-			<a class="mdl-navigation__link" href="#">Anwaltsuche</a>
+			<a class="mdl-navigation__link" href="javascript:switchToView('questionnaireView')">Anwaltsuche</a>
 			<a class="mdl-navigation__link" href="javascript:switchToView('aboutView')">About</a>
 		</nav>
 	</div>
@@ -113,7 +113,7 @@
 										</span>
 									</span> <span class="mdl-list__item-secondary-action">
 									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox4">
-										<input type="checkbox" id="checkbox4" class="mdl-checkbox__input" onclick="switchToView('questionnaireView')"/>
+										<input type="checkbox" id="checkbox4" class="mdl-checkbox__input"/>
 									</label>
 								</span>
 								</li>
@@ -253,7 +253,7 @@
 			</div>
 		</section>
 
-		<!-- QUESTIONAIRE VIEW --------------------------------------------------------------------------------------->
+		<!-- QUESTIONNAIRE VIEW --------------------------------------------------------------------------------------->
 		<section id="questionnaireView" class="bakery-view">
 			<div class="mdl-grid">
 				<div class="mdl-layout-spacer"></div>
@@ -286,7 +286,9 @@
 <script src="../libs/dialogPolyfill/dialog-polyfill.js"></script>
 <script src="../libs/mdl/material.js"></script>
 <script src="../js/app.js"></script>
+<script src="../js/todoList.js"></script>
 <script src="../js/todoListHandler.js"></script>
 <script src="../js/questionnaireHandler.js"></script>
+
 </body>
 </html>
