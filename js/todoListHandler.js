@@ -1,4 +1,5 @@
 var myTodoList;
+var startupTodoList;
 var listEntryTemplate = '<li class="mdl-list__item mdl-ext_todolist__item"> ' +
     '{$uparrowbutton}'+
     '{$downarrowbutton}'+
@@ -18,30 +19,32 @@ var downArrowButtonTemplate = '<button class="mdl-button mdl-js-button mdl-butto
     '</button>';
 
 function initTestData() {
-    createNewEntry("a", "lorem ipsum dolor sit amet");
-    createNewEntry("b", "lorem ipsum dolor sit amet");
-    createNewEntry("c", "lorem ipsum dolor sit amet");
-    createNewEntry("d", "lorem ipsum dolor sit amet");
+    createNewEntry("a", myTodoList, "myTodoList");
+    createNewEntry("b", myTodoList, "myTodoList");
+    createNewEntry("c", myTodoList, "myTodoList");
+    createNewEntry("d", myTodoList, "myTodoList");
 }
 
 function initTodoListHandler() {
     loadMyTodoListEntriesFromStorage();
+    loadStartupTodoListEntriesFromStorage();
 
     initDeleteAllDialog();
     initAddEntryDialog();
-    initProgressbar();
+    initProgressbars();
 }
 
-function initProgressbar() {
-    updateProgressbar();
+function initProgressbars() {
+    updateProgressbar("myTodoProgressbar", myTodoList);
+    updateProgressbar("startupTodoProgressbar", startupTodoList);
 }
 
-function updateProgressbar() {
-    let entries = myTodoList.entries.length;
-    let done = myTodoList.entries.filter(e => e.state).length;
+function updateProgressbar(id, list) {
+    let entries = list.entries.length;
+    let done = list.entries.filter(e => e.state).length;
     let val = (done / entries) * 100;
 
-    $("#myTodoProgressbar>.progressbar").css("width", val + "%");
+    $("#"+id+">.progressbar").css("width", val + "%");
 }
 
 function initAddEntryDialog() {
@@ -72,7 +75,7 @@ function initAddEntryDialog() {
         let title = $("#newEntryTitle");
         //let text = $("#newEntryText");
 
-        createNewEntry(title.val());
+        createNewEntry(title.val(), myTodoList, "myTodoList");
 
         title.val("");
         title.parent().removeClass("is-dirty");
@@ -114,33 +117,66 @@ function loadMyTodoListEntriesFromStorage() {
     myTodoList = loadTodoListData("myTodo");
     cleanupEntryHtml("myTodoList");
     myTodoList.entries.forEach(entry => {
-        appendEntryHtml(entry, "myTodoList");
+        appendEntryHtml(entry, "myTodoList", myTodoList);
     });
 }
 
-function handleChangedTodoListData() {
-    storeTodoListData("myTodo");
-    updateProgressbar();
-}
+function loadStartupTodoListEntriesFromStorage() {
+    startupTodoList = loadTodoListData("startupTodo");
+    cleanupEntryHtml("startupTodoList");
 
-function createNewEntry(title) {
-    const entry = new TodoListEntry(title, false);
-
-    myTodoList.add(entry);
-    appendEntryHtml(entry, "myTodoList");
-
-    handleChangedTodoListData()
+    if(startupTodoList.entries.length === 0) {
+        initStartupTodoListEntries();
+    } else {
+        startupTodoList.entries.forEach(entry => {
+            appendEntryHtml(entry, "startupTodoList", startupTodoList, true);
+        });
+    }
 }
 
 function initStartupTodoListEntries() {
-
+    newStartupEntry("Businessplan aufstellen");
+    newStartupEntry("Finanzierung absichern");
+    newStartupEntry("Versicherungen abklären");
+    newStartupEntry("Genehmigungpflicht prüfen");
+    newStartupEntry("Rechtsform wählen");
+    newStartupEntry("Standort festsetzen");
+    newStartupEntry("Unternehmung anmelden");
 }
+
+function newStartupEntry(title) {
+    createNewEntry(title, startupTodoList, "startupTodoList", true);
+}
+
+function handleChangedTodoListData(listId) {
+    switch(listId) {
+        case "myTodoList":
+            storeTodoListData("myTodo", myTodoList);
+            updateProgressbar("myTodoProgressbar", myTodoList);
+            break;
+        case "startupTodoList":
+            storeTodoListData("startupTodo", startupTodoList);
+            updateProgressbar("startupTodoProgressbar", startupTodoList);
+            break;
+        default:
+    }
+}
+
+function createNewEntry(title, todoList, htmlId, simple = false) {
+    const entry = new TodoListEntry(title, false);
+
+    todoList.add(entry);
+    appendEntryHtml(entry, htmlId, todoList, simple);
+
+    handleChangedTodoListData(htmlId);
+}
+
 
 function deleteEntryById(id) {
     myTodoList.removeEntryById(id);
     removeEntryHtmlById(id);
 
-    handleChangedTodoListData();
+    handleChangedTodoListData("myTodoList");
 }
 
 function cleanupEntryHtml(todoListId) {
@@ -153,7 +189,7 @@ function removeEntryHtmlById(id) {
     $(idString).parents("li").remove();
 }
 
-function appendEntryHtml(entry, todoListId, simple = false) {
+function appendEntryHtml(entry, todoListId, todoList, simple = false) {
     let template = listEntryTemplate;
 
     template = template.replace(/{\$title}/g, entry.title);
@@ -184,9 +220,9 @@ function appendEntryHtml(entry, todoListId, simple = false) {
         let input = $(this).find("input");
         let id = input.attr("id");
 
-        myTodoList.getEntryById(id).state = input.prop("checked");
+        todoList.getEntryById(id).state = input.prop("checked");
 
-        handleChangedTodoListData();
+        handleChangedTodoListData(todoListId);
     });
 
     htmlListEntry.find(".mdl-button:contains('keyboard_arrow_up')").click(function() {
@@ -206,14 +242,14 @@ function appendEntryHtml(entry, todoListId, simple = false) {
 
 function moveHtmlEntryUp(id) {
     if(myTodoList.moveEntryUpById(id)) {
-        handleChangedTodoListData();
+        handleChangedTodoListData("myTodoList");
         loadMyTodoListEntriesFromStorage();
     }
 }
 
 function moveHtmlEntryDown(id) {
     if(myTodoList.moveEntryDownById(id)) {
-        handleChangedTodoListData();
+        handleChangedTodoListData("myTodoList");
         loadMyTodoListEntriesFromStorage();
     }
 }

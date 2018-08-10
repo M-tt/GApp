@@ -1,8 +1,7 @@
 class TodoListEntry {
-    constructor(title, text = "", state) {
+    constructor(title, state) {
         this.id = guid();
         this.title = title;
-        this.text = text;
         this.state = state;
     }
 }
@@ -80,10 +79,10 @@ class TodoList {
     }
 }
 
-function storeTodoListData(key) {
+function storeTodoListData(key, list) {
     console.log("Storing TodoListData for key " + key);
 
-    let json = JSON.stringify(myTodoList);
+    let json = JSON.stringify(list);
     localStorage.setItem(key, json);
 }
 
