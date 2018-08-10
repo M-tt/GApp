@@ -69,6 +69,8 @@ function questionnaireNext(answerId) {
 
         qContainer.append(rTemplate);
     }
+
+    componentHandler.upgradeDom();
 }
 
 var questions = [];
