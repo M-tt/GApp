@@ -1,10 +1,9 @@
 var myTodoList;
-var listEntryTemplate = '<li class="mdl-list__item mdl-list__item--two-line"> ' +
+var listEntryTemplate = '<li class="mdl-list__item mdl-ext_todolist__item"> ' +
     '{$uparrowbutton}'+
     '{$downarrowbutton}'+
     '<span class="mdl-list__item-primary-content"> ' +
-    '<span>{$title}</span> ' +
-    '<span class="mdl-list__item-sub-title">{$text}</span> ' +
+    '<span class="wrapped">{$title}</span> ' +
     '</span> ' +
     '<span class="mdl-list__item-secondary-action"> ' +
     '<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{$id}"> ' +

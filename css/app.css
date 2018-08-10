@@ -36,11 +36,25 @@ body {
 
 .mdl-ext__fixed-fab {
     position: fixed;
-    right: 24px;
-    bottom: 24px;
     padding-top: 24px;
     margin-bottom: 0;
     z-index: 998;
+}
+
+#addTodoButton {
+    right: 24px;
+    bottom: 24px;
+}
+
+#deleteAllButton {
+    right: 96px;
+    bottom: 24px;
+    background: rgba(229,115,115,1);
+}
+
+.mdl-ext_todolist__item {
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .mdl-ext__micro-button {
@@ -129,4 +143,9 @@ body {
 
 #myTodoList {
     margin-top: 0px;
+}
+
+.wrapped {
+    overflow-wrap: break-word;
+    white-space: normal;
 }
