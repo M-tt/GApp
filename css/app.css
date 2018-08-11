@@ -246,3 +246,23 @@ body {
 #questionnaireIcon {
     font-size: 50px;
 }
+
+/*make font color white for green theme*/
+.mdl-layout__header .mdl-layout__drawer-button {
+    color: #ffffff;
+}
+.mdl-layout__header {
+    color: #ffffff;
+}
+.mdl-layout__tab {
+    color: #ffffff;
+}
+.mdl-layout.is-upgraded .mdl-layout__tab.is-active {
+    color: #ffffff;
+}
+.questionnaire-answer.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--colored {
+    color: #ffffff;
+}
+i#questionnaireIcon {
+    color: rgb(76,175,80);
+}
