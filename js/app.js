@@ -75,3 +75,16 @@ function guid() {
     }
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
+
+function closeIntroCard() {
+    $("#introCardCell").hide();
+}
+
+function scrollToQuestionnaireInfoCard() {
+    $(".mdl-layout__content").scrollTo("#questionnaireInfoCard", 600, {
+        offset: -16
+    });
+
+    let qCard = $("#questionnaireInfoCard");
+    qCard.addClass("shakeFast");
+}
