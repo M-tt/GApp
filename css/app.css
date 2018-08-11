@@ -233,3 +233,7 @@ body {
     animation-iteration-count: infinite;
     animation-delay: 800ms;
 }
+
+#createDialog, #deleteDialog {
+    transform: translateY(-50%);
+}
