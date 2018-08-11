@@ -247,6 +247,33 @@ body {
     font-size: 50px;
 }
 
+.questionnaire-card .mdl-card__title {
+    background-color: #ffffff00;
+    /*background-image: url(../gfx/chef_white.svg);
+    background-position-x: right 10px;
+    background-position-y: top 10px;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: auto 70%;
+    background-origin: padding-box;
+    background-clip: border-box;*/
+    min-height: 200px;
+    z-index: 1;
+}
+
+.questionnaire-title-background {
+    position: absolute;
+    color: #aaa;
+    left: auto;
+    right: 10px;
+    bottom: auto;
+    width: 100%;
+    text-align: right;
+}
+.questionnaire-title-background-icon {
+    font-size: 9em;
+}
+
 /*make font color white for green theme*/
 .mdl-layout__header .mdl-layout__drawer-button {
     color: #ffffff;

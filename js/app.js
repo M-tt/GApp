@@ -8,7 +8,6 @@ function bindEvents() {
 
     //make questionnaire info text in intro card also clickable
     $("#questionnaireInfoText").click(function() {
-        console.log("click");
         $("#questionnaireIcon").parents("a")[0].click();
     })
 
@@ -63,20 +62,6 @@ function goBack() {
 function closeDrawer() {
     $('.mdl-layout__drawer')[0].classList.remove("is-visible");
     $('.mdl-layout__obfuscator')[0].classList.remove("is-visible");
-
-    /* //stuff from google toggleDrawer() method
-    var drawerButton = this.element_.querySelector('.' + this.CssClasses_.DRAWER_BTN);
-    this.drawer_.classList.toggle(this.CssClasses_.IS_DRAWER_OPEN);
-    this.obfuscator_.classList.toggle(this.CssClasses_.IS_DRAWER_OPEN);
-    // Set accessibility properties.
-    if (this.drawer_.classList.contains(this.CssClasses_.IS_DRAWER_OPEN)) {
-        this.drawer_.setAttribute('aria-hidden', 'false');
-        drawerButton.setAttribute('aria-expanded', 'true');
-    } else {
-        this.drawer_.setAttribute('aria-hidden', 'true');
-        drawerButton.setAttribute('aria-expanded', 'false');
-    }
-    */
 }
 
 function guid() {
