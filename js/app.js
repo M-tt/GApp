@@ -11,6 +11,7 @@ function bindEvents() {
         console.log("click");
         $("#questionnaireIcon").parents("a")[0].click();
     })
+
 }
 
 var viewsWithDrawerMenu = ["startView", "aboutView", "communityView", "matchingView", "lawyerView"];
