@@ -25,6 +25,13 @@ function initTestData() {
     createNewEntry("d", myTodoList, "myTodoList");
 }
 
+function initIntroData() {
+    createNewEntry("Einträge mit den Pfeilen hoch und runter schieben", myTodoList, "myTodoList");
+    createNewEntry("Einen neuen Eintrag mit Plus-Schaltfläche erstellen", myTodoList, "myTodoList");
+    createNewEntry("Abhaken der Einträge durch Tap auf Text oder Checkbox", myTodoList, "myTodoList");
+    createNewEntry("Alle Einträge mit der Mülltonnen-Schaltfläche löschen", myTodoList, "myTodoList");
+}
+
 function initTodoListHandler() {
     loadMyTodoListEntriesFromStorage();
     loadStartupTodoListEntriesFromStorage();
@@ -116,9 +123,14 @@ function initDeleteAllDialog() {
 function loadMyTodoListEntriesFromStorage() {
     myTodoList = loadTodoListData("myTodo");
     cleanupEntryHtml("myTodoList");
-    myTodoList.entries.forEach(entry => {
-        appendEntryHtml(entry, "myTodoList", myTodoList);
-    });
+
+    if(myTodoList.entries.length === 0) {
+        initIntroData();
+    } else {
+        myTodoList.entries.forEach(entry => {
+            appendEntryHtml(entry, "myTodoList", myTodoList);
+        });
+    }
 }
 
 function loadStartupTodoListEntriesFromStorage() {
