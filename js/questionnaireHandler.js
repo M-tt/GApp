@@ -13,62 +13,33 @@ let cardTemplate =
     '</div>';
 
 let buttonTemplate =
-    '<div id="{$id}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="questionnaireNext(\'{$id}\')">' +
+    '<div id="{$id}" class="questionnaire-answer mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="questionnaireNext(\'{$id}\')">' +
     '{$text}' +
     '</div> ' +
     '<!--{$answer}-->';
 
 let visibleCards = [];
+let qContainer = $("#questionnaireQuestionContainer");
+
+function initQuestionnaire() {
+    qContainer.html("");
+    visibleCards = [];
+
+    let initAnswer = answers.find(a => a.id === "aInit");
+    let newCard = createQuestionCard(initAnswer);
+    visibleCards.push(newCard);
+}
 
 function questionnaireNext(answerId) {
-    //maybe clean up startup "sequence" for questionnaire
-
     let givenAnswer = answers.find(a => a.id === answerId);
-    let qContainer = $("#questionnaireQuestionContainer");
     let newCard = {};
 
     if (givenAnswer.nextItem instanceof Question) {
         //generate new question card
-        let next = givenAnswer.nextItem;
-
-        let qTemplate = cardTemplate;
-        qTemplate = qTemplate.replace(/{\$id}/g, next.id);
-        qTemplate = qTemplate.replace(/{\$title}/g, next.title);
-        qTemplate = qTemplate.replace(/{\$text}/g, next.text);
-
-        for (let i in next.answers) {
-            let answer = next.answers[i];
-
-            let aTemplate = buttonTemplate;
-
-            aTemplate = aTemplate.replace(/{\$id}/g, answer.id);
-            aTemplate = aTemplate.replace(/{\$text}/g, answer.text);
-
-            qTemplate = qTemplate.replace(/<!--{\$answer}-->/g, aTemplate);
-        }
-
-        qTemplate = qTemplate.replace(/<!--{\$answer}-->/g, "");
-
-        newCard = $(qTemplate).appendTo(qContainer);
+        newCard = createQuestionCard(givenAnswer);
     } else {
         //generate result card
-        let result = givenAnswer.nextItem;
-
-        let rTemplate = cardTemplate;
-
-        rTemplate = rTemplate.replace(/{\$id}/g, result.id);
-        rTemplate = rTemplate.replace(/{\$title}/g, result.rechtsform);
-        rTemplate = rTemplate.replace(/{\$text}/g, result.text);
-
-        let bTemplate = buttonTemplate;
-
-        bTemplate = bTemplate.replace(/questionnaireNext\('{\$id}'\)/g, "switchToView('startView')");
-        bTemplate = bTemplate.replace(/{\$id}/g, "resultOK");
-        bTemplate = bTemplate.replace(/{\$text}/g, "OK");
-        rTemplate = rTemplate.replace(/<!--{\$answer}-->/g, bTemplate);
-        rTemplate = rTemplate.replace(/<!--{\$answer}-->/g, "");
-
-        newCard = $(rTemplate).appendTo(qContainer);
+        newCard = createResultCard(givenAnswer);
     }
 
     let offset = (window.innerWidth + 20) + "px";
@@ -90,6 +61,46 @@ function questionnaireNext(answerId) {
     });
 }
 
+function createQuestionCard(givenAnswer) {
+    let next = givenAnswer.nextItem;
+
+    let qTemplate = cardTemplate;
+    qTemplate = qTemplate.replace(/{\$id}/g, next.id);
+    qTemplate = qTemplate.replace(/{\$title}/g, next.title);
+    qTemplate = qTemplate.replace(/{\$text}/g, next.text);
+
+    for (let i in next.answers) {
+        let answer = next.answers[i];
+
+        let aTemplate = buttonTemplate;
+        aTemplate = aTemplate.replace(/{\$id}/g, answer.id);
+        aTemplate = aTemplate.replace(/{\$text}/g, answer.text);
+
+        qTemplate = qTemplate.replace(/<!--{\$answer}-->/g, aTemplate);
+    }
+
+    qTemplate = qTemplate.replace(/<!--{\$answer}-->/g, "");
+
+    return $(qTemplate).appendTo(qContainer);
+}
+
+function createResultCard(givenAnswer) {
+    let result = givenAnswer.nextItem;
+
+    let rTemplate = cardTemplate;
+    rTemplate = rTemplate.replace(/{\$id}/g, result.id);
+    rTemplate = rTemplate.replace(/{\$title}/g, result.rechtsform);
+    rTemplate = rTemplate.replace(/{\$text}/g, result.text);
+
+    let bTemplate = buttonTemplate;
+    bTemplate = bTemplate.replace(/questionnaireNext\('{\$id}'\)/g, "switchToView('startView')");
+    bTemplate = bTemplate.replace(/{\$id}/g, "resultOK");
+    bTemplate = bTemplate.replace(/{\$text}/g, "OK");
+    rTemplate = rTemplate.replace(/<!--{\$answer}-->/g, bTemplate);
+    rTemplate = rTemplate.replace(/<!--{\$answer}-->/g, "");
+
+    return $(rTemplate).appendTo(qContainer);
+}
 
 let questions = [];
 let answers = [];
@@ -152,6 +163,7 @@ questions.push(new Question("qSoloHaftung", ["aSoloPrivat", "aSoloFirma"], "Haft
 questions.push(new Question("qTeamHaftung", ["aSoloPrivat", "aSoloFirma"], "Haftung", "Für den Fall, dass eure Idee nicht funktionieren sollte oder finanzielle Probleme auftreten (wovon wir nicht ausgehen ;)), ist von der Rechtsform abghängig, ob mit dem persönlichen oder dem Gesellschaftsvermögen gehaftet wird."));
 //questions.push(new Question("", "", ""));
 
+answers.push(new Answer("aInit", "qStart", ""));
 answers.push(new Answer("aStart1", "qSoloHaftung", "Alleine"));
 answers.push(new Answer("aStart2", "qTeamHaftung", "2 oder Mehr"));
 answers.push(new Answer("aSoloPrivat", "rFreiberufler", "Persönlich"));
@@ -164,5 +176,3 @@ results.push(new Result("rGmbH", "GmbH", "Du bist eine GmbH! Nach mir die Sintfl
 
 questions.forEach(q => q.fetchAnswers());
 answers.forEach(a => a.fetchNextItem());
-
-visibleCards.push($("#qStart"));
