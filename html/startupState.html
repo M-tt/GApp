@@ -77,9 +77,9 @@
 								<div class="mdl-card__supporting-text mdl-ext-infocard__supporting-text">
 									Diese App kann Startups helfen die Übersicht zu behalten und bei wichtigen Entscheidungen den Weg weisen!
 									
-									<ul class="demo-list-icon mdl-list">
+									<ul class="mdl-list">
 										<li class="mdl-list__item">
-											<span class="mdl-list__item-primary-content">
+											<span class="mdl-list__item-primary-content" id="questionnaireInfoText">
 												<i class="material-icons mdl-list__item-icon">new_releases</i>
 												Questionnaire: Fragebogen zur Wahl der Rechtsform
 											</span>
@@ -90,7 +90,7 @@
 										<li class="mdl-list__item">
 											<span class="mdl-list__item-primary-content">
 												<i class="material-icons mdl-list__item-icon">new_releases</i>
-												Mein Startup:<br> Todo-Liste mit wichtigen Punkten zur Gründung
+												Mein Startup:<br> To-Do-Liste mit wichtigen Punkten zur Gründung
 											</span>
 										</li>
 										<li class="mdl-list__item">
@@ -102,7 +102,7 @@
 										<li class="mdl-list__item">
 											<span class="mdl-list__item-primary-content">
 												<i class="material-icons mdl-list__item-icon">new_releases</i>
-												Die Zukunft:<br> Möglichkeiten zum Networking und mehr Hilfe bei der Gründung eines Startups.
+												Die Zukunft:<br> Möglichkeiten zum Networking und weitere Informationen zur Gründung eines Startups.
 											</span>
 										</li>
 									</ul>
@@ -125,7 +125,7 @@
 								</div>
 								<div class="mdl-card__actions mdl-card--border">
 									<div class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-									   onclick="initQuestionnaire(); switchToView('questionnaireView');">
+									   onclick="removeShakeFromQuestionnaireInfoCard(); initQuestionnaire(); switchToView('questionnaireView');">
 										Questionnaire starten
 									</div>
 								</div>

@@ -96,7 +96,7 @@ body {
 }
 
 .progresscard_spacer {
-    height: 10px;
+    height: 16px;
 }
 
 .mdl-dialog {
@@ -206,10 +206,16 @@ body {
         transform: rotate(0deg);
     }
     15% {
-        transform: rotate(-2deg);
+        transform: rotate(-5deg);
     }
     30% {
-        transform: rotate(2deg);
+        transform: rotate(5deg);
+    }
+    45% {
+        transform: rotate(-5deg);
+    }
+    60% {
+        transform: rotate(0deg);
     }
     100% {
         transform: rotate(0deg);
@@ -223,7 +229,7 @@ body {
 }
 
 .shakeFast {
-    animation: shake 300ms;
+    animation: shake 1500ms;
     animation-iteration-count: infinite;
     animation-delay: 800ms;
 }

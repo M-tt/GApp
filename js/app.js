@@ -1,6 +1,17 @@
 $(document).ready(function() {
     initTodoListHandler();
+    bindEvents();
 });
+
+
+function bindEvents() {
+
+    //make questionnaire info text in intro card also clickable
+    $("#questionnaireInfoText").click(function() {
+        console.log("click");
+        $("#questionnaireIcon").parents("a")[0].click();
+    })
+}
 
 var viewsWithDrawerMenu = ["startView", "aboutView", "communityView", "matchingView", "lawyerView"];
 
@@ -85,6 +96,9 @@ function scrollToQuestionnaireInfoCard() {
         offset: -16
     });
 
-    let qCard = $("#questionnaireInfoCard");
-    qCard.addClass("shakeFast");
+    $("#questionnaireInfoCard").addClass("shakeFast");
+}
+
+function removeShakeFromQuestionnaireInfoCard() {
+    $("#questionnaireInfoCard").removeClass("shakeFast");
 }
