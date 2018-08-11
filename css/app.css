@@ -39,9 +39,10 @@ body {
 }
 
 .chefs-hat {
-    max-height: 48px;
+    max-height: 36px;
     float: right;
     margin: 4px -12px 4px auto;
+    padding-right: 4px;
 }
 
 .mdl-ext__fixed-fab {
@@ -177,7 +178,7 @@ body {
 }
 
 .mdl-ext-infocard__supporting-text {
-    min-height: 100px;
+    min-height: 80px;
 }
 
 .mdl-ext-infocard__title {
@@ -186,5 +187,5 @@ body {
 }
 
 .mdl-ext-infocard__title-text {
-
+    font-size: 22px;
 }
