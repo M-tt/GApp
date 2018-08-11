@@ -31,6 +31,8 @@ function initQuestionnaire() {
     let initAnswer = answers.find(a => a.id === "aInit");
     let newCard = createQuestionCard(initAnswer);
     visibleCards.push(newCard);
+
+    componentHandler.upgradeDom();
 }
 
 function questionnaireNext(answerId) {
