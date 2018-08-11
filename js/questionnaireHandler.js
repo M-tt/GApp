@@ -54,6 +54,9 @@ function questionnaireNext(answerId) {
     newCard.animate({left: "+=" + offset}, 0, "swing");
     newCard.animate({left: "-=" + offset}, 400, "swing");
 
+    previousCard.find(".questionnaire-answer").each(function(k, v) {
+        v.onclick = "";
+    });
     previousCard.animate({left: "-" + offset}, 400, "swing", function() {
         visibleCards[0].remove();
         newCard[0].style = "";
