@@ -68,7 +68,7 @@ body {
 }
 
 .mdl-ext__micro-button {
-    transform: scale(0.9, 0.9) translateX(-1em);
+    transform: scale(0.9, 0.9) translateX(-16px);
 }
 
 .mdl-ext-progresscard__title-text {
@@ -236,4 +236,8 @@ body {
 
 #createDialog, #deleteDialog {
     transform: translateY(-50%);
+}
+
+#mdl-ext-todolist_item-secondary-action {
+    transform: translateX(16px);
 }

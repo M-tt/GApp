@@ -3,10 +3,11 @@ var startupTodoList;
 var listEntryTemplate = '<li class="mdl-list__item mdl-ext_todolist__item"> ' +
     '{$uparrowbutton}'+
     '{$downarrowbutton}'+
+    '{$deletebutton}'+
     '<span class="mdl-list__item-primary-content"> ' +
     '<span class="wrapped">{$title}</span> ' +
     '</span> ' +
-    '<span class="mdl-list__item-secondary-action"> ' +
+    '<span class="mdl-list__item-secondary-action mdl-ext-todolist_item-secondary-action"> ' +
     '<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{$id}"> ' +
     '<input type="checkbox" id="{$id}" class="mdl-checkbox__input" {$state}/> </label> </span> </li>';
 
@@ -16,6 +17,10 @@ var upArrowButtonTemplate = '<button class="mdl-button mdl-js-button mdl-button-
 
 var downArrowButtonTemplate = '<button class="mdl-button mdl-js-button mdl-button--icon mdl-ext__micro-button">'+
     '<i class="material-icons">keyboard_arrow_down</i>'+
+    '</button>';
+
+var deleteButtonTemplate = '<button class="mdl-button mdl-js-button mdl-button--icon mdl-ext__micro-button">'+
+    '<i class="material-icons">delete</i>'+
     '</button>';
 
 function initTestData() {
@@ -78,17 +83,14 @@ function initAddEntryDialog() {
         dialog.close();
     });
 
-    $("#newEntryCreate").click(function() {
-        let title = $("#newEntryTitle");
-        //let text = $("#newEntryText");
+    $("#createDialogForm").submit(function(event) {
+        event.preventDefault();
 
+        let title = $("#newEntryTitle");
         createNewEntry(title.val(), myTodoList, "myTodoList");
 
         title.val("");
         title.parent().removeClass("is-dirty");
-
-        //text.val("");
-        //text.parent().removeClass("is-dirty");
 
         dialog.close();
     });
@@ -219,9 +221,11 @@ function appendEntryHtml(entry, todoListId, todoList, simple = false) {
     if(!simple) {
         template = template.replace(/{\$uparrowbutton}/g, upArrowButtonTemplate);
         template = template.replace(/{\$downarrowbutton}/g, downArrowButtonTemplate);
+        template = template.replace(/{\$deletebutton}/g, deleteButtonTemplate);
     } else {
         template = template.replace(/{\$uparrowbutton}/g, "");
         template = template.replace(/{\$downarrowbutton}/g, "");
+        template = template.replace(/{\$deletebutton}/g, "");
     }
 
     $("#" + todoListId).append($(template));
@@ -243,6 +247,10 @@ function appendEntryHtml(entry, todoListId, todoList, simple = false) {
 
     htmlListEntry.find(".mdl-button:contains('keyboard_arrow_down')").click(function() {
         moveHtmlEntryDown(entry.id);
+    });
+
+    htmlListEntry.find(".mdl-button:contains('delete')").click(function() {
+        deleteEntryById(entry.id);
     });
 
     htmlListEntry.find(".mdl-list__item-primary-content").click(function() {
