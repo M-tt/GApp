@@ -33,6 +33,11 @@ body {
     min-height: 100px;
 }
 
+.questionnaire-answer {
+    display: block;
+    margin: 4px;
+}
+
 .chefs-hat {
     max-height: 36px;
     float: right;
