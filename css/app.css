@@ -239,6 +239,6 @@ body {
     transform: translateY(-50%);
 }
 
-#mdl-ext-todolist_item-secondary-action {
+.mdl-ext-todolist_item-secondary-action {
     transform: translateX(16px);
 }
