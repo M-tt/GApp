@@ -3,5 +3,5 @@ $(document).ready(function() {
         function()
         {
             window.location.replace("./html/startupState.html");
-        }, 1500);
+        }, 1500000);
 });
