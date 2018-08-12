@@ -193,14 +193,14 @@ body {
 }
 
 @keyframes shakeJump {
-    0% { transform: rotate(0deg); }
-    10% { transform: rotate(-10deg); }
-    20% { transform: rotate(10deg); }
-    30% { transform: rotate(-10deg); }
-    60% { transform: rotate(0deg); }
-    80% { transform: translate(0px, 0px) }
-    90% { transform: translate(0px, -6px) }
-    100% { transform: translate(0px, 0px) }
+    0% { transform: translate(0px, -4px) rotate(0deg); }
+    10% { transform: translate(0px, -4px) rotate(-10deg); }
+    20% { transform: translate(0px, -4px) rotate(10deg); }
+    30% { transform: translate(0px, -4px) rotate(-10deg); }
+    60% { transform: translate(0px, -4px) rotate(0deg); }
+    80% { transform: translate(0px, -4px) }
+    90% { transform: translate(0px, -10px) }
+    100% { transform: translate(0px, -4px) }
 }
 
 @keyframes shake {
@@ -230,6 +230,11 @@ body {
 
 }
 
+#infoStar {
+    position: unset;
+    color: white;
+}
+
 .shakeFast {
     animation: shake 1500ms;
     animation-iteration-count: infinite;
@@ -242,10 +247,6 @@ body {
 
 .mdl-ext-todolist_item-secondary-action {
     transform: translateX(16px);
-}
-
-#questionnaireIcon {
-
 }
 
 .questionnaire-card .mdl-card__title {
