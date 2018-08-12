@@ -42,6 +42,7 @@ function initTodoListHandler() {
     loadStartupTodoListEntriesFromStorage();
 
     initDeleteAllDialog();
+    initDeleteOneEntryDialog();
     initAddEntryDialog();
     initProgressbars();
 }
@@ -94,6 +95,29 @@ function initAddEntryDialog() {
 
         dialog.close();
     });
+}
+
+function initDeleteOneEntryDialog() {
+    let dialog = document.querySelector('#deleteOneDialog');
+    if (! dialog.showModal) {
+        dialogPolyfill.registerDialog(dialog);
+    }
+
+    $("#deleteOneCancel").click(function() {
+        currentDeleteEntryId = "";
+        dialog.close();
+    });
+
+    $("#deleteOneConfirm").click(function() {
+        deleteEntryById(currentDeleteEntryId);
+        dialog.close();
+    });
+}
+
+let currentDeleteEntryId = "";
+function showDeleteOneDialog(id) {
+    currentDeleteEntryId = id;
+    document.querySelector("#deleteOneDialog").showModal();
 }
 
 function initDeleteAllDialog() {
@@ -250,7 +274,7 @@ function appendEntryHtml(entry, todoListId, todoList, simple = false) {
     });
 
     htmlListEntry.find(".mdl-button:contains('delete')").click(function() {
-        deleteEntryById(entry.id);
+        showDeleteOneDialog(entry.id);
     });
 
     htmlListEntry.find(".mdl-list__item-primary-content").click(function() {
