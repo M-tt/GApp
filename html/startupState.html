@@ -125,7 +125,7 @@
 									Mit unserem Questionnaire wollen wir bei der Wahl einer geeigneten Rechtsform helfen.
 								</div>
 								<div class="mdl-card__actions mdl-card--border">
-									<div class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="removeShakeFromQuestionnaireInfoCard(); initQuestionnaire(); switchToView('questionnaireView');">
+									<div class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="removeShakeFromQuestionnaireInfoCard(); switchToView('warningView');">
 										Questionnaire starten
 									</div>
 								</div>
@@ -265,6 +265,27 @@
 					</dialog>
 				</div>
 			</section>
+		</section>
+		
+		<!-- WARNING VIEW --------------------------------------------------------------------------------------->
+		<section id="warningView" class="bakery-view">
+			<div class="mdl-grid">
+				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-cell mdl-cell--6-col">
+					<div class="mdl-typography--text-center">
+						<i class="material-icons background-icon">warning</i>
+						<div>
+							Die nachfolgenden Fragen können vermutlich nur nach Erstellung eines Businessplans sinnvoll
+							beantwortet werden.
+						</div><br><br>
+						<button type="button"
+								onclick="initQuestionnaire(); switchToView('questionnaireView');"
+								class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+								style="color: white">Questionnaire starten</button>
+					</div>
+				</div>
+				<div class="mdl-layout-spacer"></div>
+			</div>
 		</section>
 		
 		<!-- ABOUT VIEW --------------------------------------------------------------------------------------->

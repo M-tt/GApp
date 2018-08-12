@@ -259,7 +259,7 @@ body {
     background-size: auto 70%;
     background-origin: padding-box;
     background-clip: border-box;*/
-    min-height: 200px;
+    min-height: 190px;
     /*z-index: 1;*/
 }
 
@@ -273,7 +273,7 @@ body {
     text-align: right;
 }
 .questionnaire-title-background-icon {
-    font-size: 9em;
+    font-size: 8em;
     color: rgba(76,175,80,0.5);
 }
 
@@ -292,4 +292,8 @@ body {
 }
 .questionnaire-answer.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--colored {
     color: #ffffff;
+}
+
+a {
+    color: rgb(76,175,80);
 }
