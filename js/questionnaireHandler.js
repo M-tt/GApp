@@ -55,6 +55,8 @@ function questionnaireNext(answerId) {
 
     componentHandler.upgradeDom();
 
+    $(".mdl-layout__content").scrollTo("#questionnaireView", 400);
+
     newCard[0].style = "top: -" + previousCard.outerHeight() + "px";
     newCard.animate({left: "+=" + offset}, 0, "swing");
     newCard.animate({left: "-=" + offset}, 400, "swing");
