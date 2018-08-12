@@ -274,6 +274,7 @@ body {
 }
 .questionnaire-title-background-icon {
     font-size: 9em;
+    color: rgba(76,175,80,0.5);
 }
 
 /*make font color white for green theme*/
