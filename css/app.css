@@ -245,7 +245,7 @@ body {
 }
 
 #questionnaireIcon {
-    font-size: 50px;
+
 }
 
 .questionnaire-card .mdl-card__title {
@@ -290,7 +290,4 @@ body {
 }
 .questionnaire-answer.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--colored {
     color: #ffffff;
-}
-i#questionnaireIcon {
-    color: rgb(76,175,80);
 }

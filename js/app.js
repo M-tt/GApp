@@ -8,7 +8,7 @@ function bindEvents() {
 
     //make questionnaire info text in intro card also clickable
     $("#questionnaireInfoText").click(function() {
-        $("#questionnaireIcon").parents("a")[0].click();
+        $("#questionnaireIcon").parents("button")[0].click();
     })
 
 }
