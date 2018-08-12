@@ -111,7 +111,14 @@ function createResultCard(givenAnswer) {
     template = template.replace(/<!--{\$answer}-->/g, bTemplate);
     template = template.replace(/<!--{\$answer}-->/g, "");
 
-    return $(template).appendTo(qContainer);
+    let newCard = $(template).appendTo(qContainer);
+    let title = newCard.find(".mdl-card__title");
+    title[0].style = "background-color: rgb(76,175,80) !important; color: #fff;";
+
+    let background = newCard.find(".questionnaire-title-background");
+    background[0].style = "color: #fff;";
+
+    return newCard;
 }
 
 let questions = [];
@@ -173,7 +180,7 @@ class Result {
 }
 
 //=================QUESTIONS=================//
-questions.push(new Question("qStart", ["aStart1", "aStart2"], "Gründungsmitglieder", "people", "Gründest du alleine oder hast du Mitgründer?"));
+questions.push(new Question("qStart", ["aStart1", "aStart2"], "Gründungsmitglieder", "person_add", "Gründest du alleine oder hast du Mitgründer?"));
 
 questions.push(new Question("qSoloHaftung", ["aSoloPrivat", "aSoloFirma"], "Haftung", "trending_down", "Für den Fall, dass deine Idee nicht funktionieren sollte oder finanzielle Probleme auftreten (wovon wir nicht ausgehen ;)), ist von der Rechtsform abghängig, ob mit dem persönlichen oder dem Gesellschaftsvermögen gehaftet wird."));
 questions.push(new Question("qSoloKapital", ["aSoloKapital<", "aSoloKapital>="], "Kapital", "account_balance", "Wie hoch ist dein Startkapital bzw. wie viel bist du bereit zu investieren?"));
@@ -215,12 +222,12 @@ answers.push(new Answer("aTeamPartGY", "rPartG", "Ja"));
 answers.push(new Answer("aTeamPartGN", "rGbR", "Nein"));
 
 //=================RESULTS=================//
-results.push(new Result("rEinzelunternehmen", "Einzelunternehmen", "assessment", ""));
-results.push(new Result("rUG", "UG (Haftungsbeschränkt)", "assessment", ""));
-results.push(new Result("rGmbH", "GmbH", "assessment", "Du bist eine GmbH! Nach mir die Sintflut! yey!"));
-results.push(new Result("rFreiberufler", "Freiberufler", "assessment", "Du bist ein Freiberufler und darfst legal Steuern hinterziehen! yey!"));
-results.push(new Result("rPartG", "Partnerschaftsgesellschaft", "assessment", ""));
-results.push(new Result("rGbR", "Gesellschaft bürgerlichen Rechts", "assessment", ""));
+results.push(new Result("rEinzelunternehmen", "Einzelunternehmen", "done", ""));
+results.push(new Result("rUG", "UG (Haftungsbeschränkt)", "done", ""));
+results.push(new Result("rGmbH", "GmbH", "done", "Du bist eine GmbH! Nach mir die Sintflut! yey!"));
+results.push(new Result("rFreiberufler", "Freiberufler", "done", "Du bist ein Freiberufler und darfst legal Steuern hinterziehen! yey!"));
+results.push(new Result("rPartG", "Partnerschaftsgesellschaft", "done", ""));
+results.push(new Result("rGbR", "Gesellschaft bürgerlichen Rechts", "done", ""));
 
 questions.forEach(q => q.fetchAnswers());
 answers.forEach(a => a.fetchNextItem());
