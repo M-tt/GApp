@@ -226,11 +226,40 @@ answers.push(new Answer("aTeamPartGN", "rGbR", "Nein"));
 
 //=================RESULTS=================//
 results.push(new Result("rEinzelunternehmen", "Einzelunternehmen", "done", ""));
+
+
 results.push(new Result("rUG", "UG (Haftungsbeschränkt)", "done", ""));
-results.push(new Result("rGmbH", "GmbH", "done", "Du bist eine GmbH! Nach mir die Sintflut! yey!"));
-results.push(new Result("rFreiberufler", "Freiberufler", "done", "Du bist ein Freiberufler und darfst legal Steuern hinterziehen! yey!"));
+
+
+results.push(new Result("rGmbH", "GmbH", "done", "<p>" +
+    "Die GmbH ist eine sog. Kapitalgesellschaft, d.h. die Haftung ist auf das Firmenvermögen beschränkt." +
+    "Um eine GmbH gründen zu können, muss ein schriftlicher, beglaubigter Gesellschaftsvertrag unterzeichnet werden." +
+    "Die Gesellschafterversammlung ist das oberste Organ der GmbH. Diese fasst Beschlüsse anhand von Stimmrechten" +
+    "auf Basis der jeweiligen Anteile der Gesellschafter an der GmbH." +
+    "</p>" +
+    "<p>" +
+    "Die GmbH wird durch einen oder mehrere Geschäftsführer nach außen vertreten. Die Geschäftsführer werden von den Gesellschaftern ernannt und unterliegen deren Weisungen." +
+    "</p>" +
+    "<p>" +
+    "Die GmbH muss im Handelsregister eingetragen und im Gewerbeamt angemeldet werden." +
+    "Die Buchführung muss nach dem HGB erfolgen (doppelte Buchführung / Bilanzierung)." +
+    "</p>"));
+
+
+results.push(new Result("rFreiberufler", "Freiberufler", "done", "<p>Als Freiberufler kannst du von einigen Vorteilen profitieren." +
+    "Zum einen sind Freiberufler von der Gewerbesteuer befreit. Die Umsatzsteuer ist nur abzuführen," +
+    "wenn dein Unternehmen mehr als 17.500 € Jahresumsatz generiert.</p>" +
+    "<p>Die Anmeldung deiner Tätigkeit solltest du innerhalb von vier Wochen nach Aufnahme deines Gewerbes" +
+    "beim Finanzamt einreichen. Das Finanzamt entscheidet auch darüber, ob du als Freiberufler oder Gewerbetreibender geführt wirst.</p>" +
+    "<p>Um deine Versicherungen solltest du dich natürlich auch kümmern. Es ist z.B. möglich," +
+    "sich über die Künstlersozialkasse zu versichern, oder in die gesetzliche bzw. die private Krankenversicherung einzuzahlen.</p>"));
+
+
 results.push(new Result("rPartG", "Partnerschaftsgesellschaft", "done", ""));
+
+
 results.push(new Result("rGbR", "Gesellschaft bürgerlichen Rechts", "done", ""));
+
 
 questions.forEach(q => q.fetchAnswers());
 answers.forEach(a => a.fetchNextItem());
