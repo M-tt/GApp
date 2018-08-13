@@ -195,7 +195,7 @@ questions.push(new Question("qTeamHaftung", ["aTeamPrivat", "aTeamFirma"], "Haft
 questions.push(new Question("qTeamKapital", ["aTeamKapital<", "aTeamKapital>="], "Kapital", "account_balance", "Wie hoch ist euer Startkapital bzw. wie viel Geld seid ihr bereit zu investieren?"));
 questions.push(new Question("qTeamKatalog", ["aTeamKatalogY", "aTeamKatalogN"], "Katalogberuf", "business_center", "Macht ihr euch in einem der folgenden Berufsfelder selbstständig? <ul><li>Heilberuf</li><li>Rechts-/Steuer-/Wirtschaftsberatender Beruf</li><li>Kultureller Beruf</li><li>Naturwissenschaftlicher/technischer Beruf</li></ul>"));
 questions.push(new Question("qTeamFragenJa", ["aTeamFragenJaY", "aTeamFragenJaN"], "Fragenkatalog", "view_list", "Könnt ihr alle der folgenden Fragen mit \"Ja\" beantworten? <ul><li>Habt ihr für eure Tätigkeiten eine besondere berufliche Qualifikation?</li><li>Erbringt ihr geistige, schöpferische oder ideelle Leistungen?</li><li>Setzen eure Kunden in fachlicher Hinsicht auf ein besonderes Vertrauen eurer Arbeit?</li><li>Können sich eure Kunden frei für eure Leistungen entscheiden?</li><li>Erbringt ihr eure Leistungen persönlich (nicht durch Mitarbeiter)?</li><li>Seid ihr leitend verantwortlich für die Dinge in eurem Unternehmen?</li><li>Trefft ihr fachliche Entscheidungen frei und unabhängig?</li></ul>"));
-questions.push(new Question("qTeamPartG", ["aTeamPartGY", "aTeamPartGN"], "Partnerschaftsgesellschaft?", "done_all", "Aufgrund eurer vorherigen Antworten könntet ihr ein Zusammenschluss aus \"Freiberufler\" sein und würdet von bestimmten Vorteilen profitieren: <ul><li>Keine Gewerbesteuer</li><li>Kein Handelsregistereintrag</li><li>Keine IHK-Mitgliedschaft</li><li>Keine Doppelte Buchführung (EÜR genügt)</li></ul>Wir raten dazu, diese Vorteile mitzunehmen. Wollt ihr Freiberufler werden?"));
+questions.push(new Question("qTeamPartG", ["aTeamPartGY", "aTeamPartGN"], "Partnerschaftsgesellschaft?", "done_all", "Aufgrund eurer vorherigen Antworten könntet ihr ein Zusammenschluss aus \"Freiberuflern\" sein und würdet von bestimmten Vorteilen profitieren: <ul><li>Keine Gewerbesteuer</li><li>Kein Handelsregistereintrag</li><li>Keine IHK-Mitgliedschaft</li><li>Keine doppelte Buchführung (EÜR genügt)</li></ul>Wir raten dazu, diese Vorteile mitzunehmen. Wollt ihr eine Partnerschaftsgesellschaft gründen?"));
 
 //=================ANSWERS=================//
 answers.push(new Answer("aInit", "qStart", ""));
@@ -248,7 +248,10 @@ results.push(new Result("rFreiberufler", "Freiberufler", "done",
     "<p>Um deine Versicherungen solltest du dich natürlich auch kümmern. Es ist z.B. möglich, sich über die Künstlersozialkasse zu versichern, oder in die gesetzliche bzw. die private Krankenversicherung einzuzahlen.</p>"));
 
 
-results.push(new Result("rPartG", "Partnerschaftsgesellschaft", "done", ""));
+results.push(new Result("rPartG", "Partnerschaftsgesellschaft", "done",
+    "<p>Eine Partnerschaftsgesellschaft ist eine Personengesellschaft. Mehrere Freiberufler können sich zu einer Partnerschaftsgesellschaft zusammen schließen. Die Haftung erfolgt mit dem Gesellschaftsvermögen und dem persönlichen Vermögen der Gesellschafter. Eine Haftungsbeschränkung ist möglich. Es muss ein schriftlicher Partnerschaftsvertrag geschlossen werden.</p>" +
+    "<p>Es wird kein Mindeststartkapital benötigt. Zudem sind Partnerschaftsgesellschaften von der Gewerbesteuer befreit. Die Buchführung erfolgt über die Einnahmen Überschuss Rechnung.</p>" +
+    "<p>Partnerschaftsgesellschaften sind in das Partnerschaftsregister einzutragen. Die Anmeldung muss notariell beglaubigt werden.</p>"));
 
 
 results.push(new Result("rGbR", "Gesellschaft bürgerlichen Rechts", "done",
