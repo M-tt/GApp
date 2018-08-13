@@ -228,7 +228,16 @@ answers.push(new Answer("aTeamPartGN", "rGbR", "Nein"));
 results.push(new Result("rEinzelunternehmen", "Einzelunternehmen", "done", ""));
 
 
-results.push(new Result("rUG", "UG (Haftungsbeschränkt)", "done", ""));
+results.push(new Result("rUG", "UG (Haftungsbeschränkt)", "done", "<p>" +
+    "Die Unternehmergesellschaft (haftungsbeschränkt), auch Mini-GmbH oder Ein-Euro-GmbH genannt, ist eine Kapitalgesellschaft. " +
+    "Das bedeutet, dass die Haftung, wie bei der GmbH, auf das Firmenvermögen beschränkt ist. " +
+    "Auch bei der UG (haftungsbeschränkt) ist ein Gesellschaftsvertrag zu unterzeichnen und der Notar übernimmt die Eintragung in das  Handelsregister. " +
+    "</p>" +
+    "<p>" +
+    "Anders als bei der GmbH kann die UG (haftungsbeschränkt) bereits mit einem Euro Start- bzw. Stammkapital gegründet werden. " +
+    "Allerdings empfiehlt es sich in der Praxis auch für die Unternehmergesellschaft mehr Kapital einzusetzen. " +
+    "Die Unternehmergesellschaft ist verpflichtet, Rücklagen in Höhe von mindestens 25 % des Jahresüberschusses zu bilden. " +
+    "Dies gilt solange, bis ein Mindeststammkapital von 25.000 € erreicht ist. </p>"));
 
 
 results.push(new Result("rGmbH", "GmbH", "done", "<p>" +
