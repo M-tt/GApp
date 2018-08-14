@@ -226,9 +226,10 @@ answers.push(new Answer("aTeamPartGN", "rGbR", "Nein"));
 
 //=================RESULTS=================//
 results.push(new Result("rEinzelunternehmen", "Einzelunternehmen", "done",
-    "<p>Du könntest dich als Kleingewerbetreibender oder als Kaufmann e.K. selbstständig machen. Sowohl als Kleingewerbetreibender als auch als Kaufmann e.K. musst du dein Gewerbe beim Gewerbeamt und dem Finanzamt anmelden. In beiden Fällen ist kein Mindeststartkapital vorgeschrieben. Obwohl grundsätzlich die Gewerbesteuer abgeführt werden muss, gilt für Kleingewerbetreibende und Kaufleute e.K. ein Steuerfreibetrag von 24.500 € jährlich. überschreitet der Umsatz im Gründungsjahr 17.500 € bzw. im Folgejahr 50.000 € nicht, gilt zudem die Kleinunternehmerregelung. In diesem Fall kann auf die Erhebung und Abführung der Umsatzsteuer verzichtet werden. Je nach ausgeübter Tätigkeit kann eine Mitgliedschaft bei der IHK oder der HWK Pflicht sein.</p>" +
-    "<p>Der Vorteil eines Kleingewerbes ist, dass keine Handelsregistereintragung vorgenommen werden muss. Die Buchhaltung kann in der Form der Einnahmen überschuss Rechnung (EÜR) erfolgen. Nimmst du mit deinem Kleingewerbe weniger als 8.820 € ein, musst du keine Einkommenssteuer zahlen. Die Gründungskosten sind mit 50 € gering. Die Gründungsdauer ist mit einem Tag sehr kurz.</p>" +
-    "<p>Bei einer Selbstständigkeit als Kaufmann e.K. muss ein Handelsregistereintrag vorgenommen werden. Anders als bei einem Kleingewerbe ist es dafür aber möglich, einen Fantasienamen als Firmennamen zu verwenden. Die Buchhaltung eines Kaufmann e.K. muss je nachdem, ob Schwellenwerte überschritten werden oder nicht, über die doppelte Buchführung / Bilanzierung oder die EÜR erfolgen. Die Gründungskosten betragen ca. 300 €. Die Gründungsdauer beträgt ca. 2 Wochen.</p>"));
+    "<p>Du könntest dich als Kleingewerbetreibender oder als Kaufmann e.K. selbstständig machen. Sowohl als Kleingewerbetreibender als auch als Kaufmann e.K. musst du dein Gewerbe beim Gewerbeamt und dem Finanzamt anmelden. In beiden Fällen ist kein Mindeststartkapital vorgeschrieben. Bei unterschreiten bestimmter Schwellenwerte müssen weder die Gewerbe- noch die Umsatzsteuer abgeführt werden.</p>" +
+    "<p>Der Vorteil eines Kleingewerbes ist, dass keine Handelsregistereintragung vorgenommen werden muss. Die Buchhaltung kann in der Form der Einnahmen Überschuss Rechnung (EÜR) erfolgen. Nimmst du mit deinem Kleingewerbe weniger als 8.820 € ein, musst du keine Einkommenssteuer zahlen. Die Gründungskosten sind mit 50 € gering. Die Gründungsdauer ist mit einem Tag sehr kurz.</p>" +
+    "<p>Bei einer Selbstständigkeit als Kaufmann e.K. muss ein Handelsregistereintrag vorgenommen werden. Die Buchhaltung eines Kaufmann e.K. muss je nachdem, ob Schwellenwerte überschritten werden oder nicht, über die doppelte Buchführung / Bilanzierung oder die EÜR erfolgen. Die Gründungskosten betragen ca. 300 €. Die Gründungsdauer beträgt ca. 2 Wochen.</p>"));
+
 
 
 results.push(new Result("rUG", "UG (haftungsbeschränkt)", "done",
@@ -249,8 +250,8 @@ results.push(new Result("rFreiberufler", "Freiberufler", "done",
 
 
 results.push(new Result("rPartG", "Partnerschaftsgesellschaft", "done",
-    "<p>Eine Partnerschaftsgesellschaft ist eine Personengesellschaft. Mehrere Freiberufler können sich zu einer Partnerschaftsgesellschaft zusammen schließen. Die Haftung erfolgt mit dem Gesellschaftsvermögen und dem persönlichen Vermögen der Gesellschafter. Eine Haftungsbeschränkung ist möglich. Es muss ein schriftlicher Partnerschaftsvertrag geschlossen werden.</p>" +
-    "<p>Es wird kein Mindeststartkapital benötigt. Zudem sind Partnerschaftsgesellschaften von der Gewerbesteuer befreit. Die Buchführung erfolgt über die Einnahmen Überschuss Rechnung.</p>" +
+    "<p>Mehrere Freiberufler können sich zu einer Partnerschaftsgesellschaft zusammen schließen. Die Haftung erfolgt mit dem Gesellschaftsvermögen und dem persönlichen Vermögen der Gesellschafter. Eine Haftungsbeschränkung ist möglich. Es muss ein schriftlicher Partnerschaftsvertrag geschlossen werden.</p>" +
+    "<p>Es wird kein Mindeststartkapital benötigt. Zudem sind Partnerschaftsgesellschaften von der Gewerbesteuer befreit. Die Buchführung erfolgt über die Einnahmen Überschuss Rechnung (EÜR).</p>" +
     "<p>Partnerschaftsgesellschaften sind in das Partnerschaftsregister einzutragen. Die Anmeldung muss notariell beglaubigt werden.</p>"));
 
 
