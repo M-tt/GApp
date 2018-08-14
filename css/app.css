@@ -38,11 +38,16 @@ body {
     margin: 4px;
 }
 
-.chefs-hat {
+.logo {
     max-height: 36px;
     float: right;
-    margin: 4px -12px 4px auto;
-    padding-right: 4px;
+    margin: 4px -32px 4px auto;
+    padding-right: 18px;
+}
+
+.splash-logo {
+    max-height: 128px;
+    margin: auto;
 }
 
 .mdl-ext__fixed-fab {
@@ -251,7 +256,7 @@ body {
 
 .questionnaire-card .mdl-card__title {
     background-color: #ffffff00;
-    /*background-image: url(../gfx/chef_white.svg);
+    /*background-image: url(../gfx/logo_white.svg);
     background-position-x: right 10px;
     background-position-y: top 10px;
     background-repeat: no-repeat;

@@ -1,9 +1,9 @@
 {
-  "short_name": "Startup Bakery",
-  "name": "Startup Bakery",
+  "short_name": "GAPP",
+  "name": "Die Gründerapp",
   "icons": [
     {
-      "src": "gfx/chef.png",
+      "src": "gfx/logo.png",
       "sizes": "192x192",
       "type": "image/png"
     }
