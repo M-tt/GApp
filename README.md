@@ -1,4 +1,4 @@
 # GApp
 
 app can be found at
-https://m-tt.github.io/GApp/
+https://m-tt.github.io/gapp/
